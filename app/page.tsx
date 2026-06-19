@@ -1,28 +1,13 @@
 export default function Home() {
   return (
     <>
-      {/* Nav */}
-      <nav aria-label="Main navigation" className="bg-cream sticky top-0 z-50 border-b border-sage/30">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-amber focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-medium"
-        >
-          Skip to main content
-        </a>
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="font-heading font-bold text-teal text-xl tracking-tight">TJRCS</span>
-          <div className="flex gap-8">
-            <a href="#" className="text-teal hover:text-amber transition-colors text-sm font-medium">Home</a>
-            <a href="#about" className="text-teal hover:text-amber transition-colors text-sm font-medium">About</a>
-            <a href="#contact" className="text-teal hover:text-amber transition-colors text-sm font-medium">Contact</a>
-          </div>
-        </div>
-      </nav>
-
       <main id="main-content">
         {/* 1. Hero */}
         <section className="bg-cream py-28 px-6">
           <div className="max-w-4xl mx-auto">
+            <div className="font-heading font-bold text-teal text-2xl mb-3">
+              Build &amp; Launch
+            </div>
             <h1 className="font-heading font-bold text-teal text-5xl leading-tight mb-8">
               Your future doesn&apos;t have to look like everyone else&apos;s. Let&apos;s build the one that fits you.
             </h1>

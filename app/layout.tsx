@@ -28,7 +28,26 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${lato.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* Nav */}
+        <nav aria-label="Main navigation" className="bg-cream sticky top-0 z-50 border-b border-sage/30">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-amber focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-medium"
+          >
+            Skip to main content
+          </a>
+          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <span className="font-heading font-bold text-teal text-3xl tracking-tight">TJRCS</span>
+            <div className="flex gap-4">
+              <a href="/" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Home</a>
+              <a href="#about" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">About</a>
+              <a href="#contact" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Contact</a>
+            </div>
+          </div>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }
