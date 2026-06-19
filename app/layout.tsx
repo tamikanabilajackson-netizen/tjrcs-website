@@ -38,11 +38,11 @@ export default function RootLayout({
             Skip to main content
           </a>
           <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <span className="font-heading font-bold text-teal text-3xl tracking-tight">TJRCS</span>
+            <span className="font-heading font-bold text-teal text-4xl tracking-tight">TJRCS</span>
             <div className="flex gap-4">
-              <a href="/" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Home</a>
-              <a href="#about" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">About</a>
-              <a href="#contact" className="text-teal text-lg font-medium border border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Contact</a>
+              <a href="/" className="text-teal text-lg font-medium border-2 border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Home</a>
+              <a href="#about" className="text-teal text-lg font-medium border-2 border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">About</a>
+              <a href="#contact" className="text-teal text-lg font-medium border-2 border-amber px-4 py-2 rounded-full hover:bg-amber hover:text-cream transition-colors">Contact</a>
             </div>
           </div>
         </nav>
