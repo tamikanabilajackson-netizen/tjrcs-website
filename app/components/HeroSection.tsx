@@ -19,7 +19,7 @@ export default function HeroSection() {
         <img
           src="/hero-desktop.svg"
           alt="Line art illustration of a brain, botanical elements, and people connecting, representing the Recreation That Connects brand."
-          className="w-full h-auto md:h-[550px] hidden md:block"
+          className="w-full h-auto hidden md:block"
         />
         {/* Mobile image */}
         <img
@@ -29,9 +29,8 @@ export default function HeroSection() {
         />
       </figure>
 
-      {/* Copy section - with padding and centered */}
-      <div className="px-6">
-        <div className="max-w-4xl mx-auto">
+      {/* Copy section */}
+      <div className="max-w-4xl mx-auto px-6">
           {/* Eyebrow with sparkles */}
           <div className="relative inline-block mb-3">
             <div className="font-heading font-bold text-teal text-3xl">
@@ -86,7 +85,6 @@ export default function HeroSection() {
               Join an info session
             </a>
           </div>
-        </div>
       </div>
     </section>
   );

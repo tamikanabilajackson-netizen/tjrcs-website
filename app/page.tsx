@@ -3,26 +3,98 @@ import HeroSection from './components/HeroSection';
 export default function Home() {
   return (
     <>
-      <main id="main-content">
+      <main id="main-content" className="overflow-x-hidden">
         <HeroSection />
 
         {/* 2. The Gap */}
-        <section className="bg-cream border-t border-sage/25 py-24 px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="text-teal/75 text-lg leading-relaxed">
-              Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
-            </p>
-            <p className="text-teal/75 text-lg leading-relaxed">
-              Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
-            </p>
+        <section className="relative overflow-hidden w-full border-t border-sage/25 py-24 px-6" style={{ backgroundColor: '#FFFFFF' }}>
+          {[
+            { top: '5%',  left: '3%',  size: 14, opacity: 0.3  },
+            { top: '8%',  left: '12%', size: 22, opacity: 0.4  },
+            { top: '3%',  left: '25%', size: 18, opacity: 0.25 },
+            { top: '12%', left: '38%', size: 28, opacity: 0.5  },
+            { top: '6%',  left: '52%', size: 16, opacity: 0.35 },
+            { top: '9%',  left: '65%', size: 24, opacity: 0.45 },
+            { top: '4%',  left: '78%', size: 20, opacity: 0.3  },
+            { top: '11%', left: '88%', size: 30, opacity: 0.55 },
+            { top: '7%',  left: '95%', size: 14, opacity: 0.25 },
+            { top: '20%', left: '6%',  size: 26, opacity: 0.45 },
+            { top: '18%', left: '20%', size: 12, opacity: 0.2  },
+            { top: '22%', left: '33%', size: 32, opacity: 0.5  },
+            { top: '16%', left: '47%', size: 18, opacity: 0.3  },
+            { top: '24%', left: '60%', size: 22, opacity: 0.4  },
+            { top: '19%', left: '73%', size: 36, opacity: 0.6  },
+            { top: '21%', left: '85%', size: 16, opacity: 0.35 },
+            { top: '35%', left: '3%',  size: 20, opacity: 0.4  },
+            { top: '32%', left: '15%', size: 28, opacity: 0.5  },
+            { top: '38%', left: '28%', size: 14, opacity: 0.25 },
+            { top: '34%', left: '42%', size: 24, opacity: 0.45 },
+            { top: '37%', left: '55%', size: 18, opacity: 0.3  },
+            { top: '31%', left: '68%', size: 30, opacity: 0.55 },
+            { top: '36%', left: '80%', size: 22, opacity: 0.4  },
+            { top: '33%', left: '92%', size: 16, opacity: 0.35 },
+            { top: '50%', left: '8%',  size: 34, opacity: 0.55 },
+            { top: '48%', left: '22%', size: 20, opacity: 0.3  },
+            { top: '52%', left: '35%', size: 26, opacity: 0.45 },
+            { top: '47%', left: '48%', size: 12, opacity: 0.2  },
+            { top: '53%', left: '62%', size: 28, opacity: 0.5  },
+            { top: '49%', left: '75%', size: 18, opacity: 0.35 },
+            { top: '51%', left: '88%', size: 32, opacity: 0.6  },
+            { top: '65%', left: '4%',  size: 16, opacity: 0.3  },
+            { top: '62%', left: '18%', size: 24, opacity: 0.45 },
+            { top: '68%', left: '30%', size: 30, opacity: 0.5  },
+            { top: '64%', left: '44%', size: 14, opacity: 0.25 },
+            { top: '67%', left: '57%', size: 22, opacity: 0.4  },
+            { top: '63%', left: '70%', size: 36, opacity: 0.55 },
+            { top: '66%', left: '82%', size: 18, opacity: 0.35 },
+            { top: '69%', left: '94%', size: 26, opacity: 0.45 },
+            { top: '78%', left: '10%', size: 20, opacity: 0.4  },
+            { top: '80%', left: '24%', size: 28, opacity: 0.5  },
+            { top: '76%', left: '37%', size: 16, opacity: 0.3  },
+            { top: '82%', left: '50%', size: 34, opacity: 0.6  },
+            { top: '77%', left: '63%', size: 12, opacity: 0.2  },
+            { top: '81%', left: '76%', size: 24, opacity: 0.45 },
+            { top: '79%', left: '89%', size: 20, opacity: 0.35 },
+            { top: '92%', left: '5%',  size: 18, opacity: 0.3  },
+            { top: '90%', left: '20%', size: 30, opacity: 0.5  },
+            { top: '94%', left: '55%', size: 22, opacity: 0.4  },
+            { top: '91%', left: '85%', size: 26, opacity: 0.45 },
+          ].map((star, i) => (
+            <span
+              key={i}
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: star.top,
+                left: star.left,
+                fontSize: `${star.size}px`,
+                opacity: star.opacity,
+                color: '#E8924B',
+                pointerEvents: 'none',
+                userSelect: 'none',
+              }}
+            >
+              ✦
+            </span>
+          ))}
+          <div className="relative z-10 max-w-4xl mx-auto px-6">
+            <div className="bg-white/80 backdrop-blur-none rounded-2xl px-8 py-6 space-y-6">
+              <h2 className="font-heading font-bold text-teal text-4xl">Where most programs start &mdash; and why we don&apos;t</h2>
+              <p className="text-teal/75 text-lg leading-relaxed">
+                Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
+              </p>
+              <p className="text-teal/75 text-lg leading-relaxed">
+                Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* 3. What Build & Launch Is */}
         <section className="bg-white py-24 px-6">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-8">What Build &amp; Launch is</h2>
-            <p className="text-teal/75 text-lg leading-relaxed mb-14 max-w-3xl">
+            <p className="text-teal/75 text-lg leading-relaxed mb-14">
               Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -62,7 +134,7 @@ export default function Home() {
 
         {/* 4. The Four Phases */}
         <section className="bg-teal py-24 px-6">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-cream text-4xl mb-14">The four phases</h2>
             <div className="grid gap-6 sm:grid-cols-2">
               {[
@@ -104,7 +176,7 @@ export default function Home() {
 
         {/* 5. The Journal */}
         <section className="bg-cream py-24 px-6">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-8">The Build &amp; Launch Journal</h2>
             <div className="space-y-6 text-teal/75 text-lg leading-relaxed">
               <p>
@@ -120,7 +192,7 @@ export default function Home() {
 
         {/* 6. Who This Is For */}
         <section className="bg-white py-24 px-6">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-14">Who this is for</h2>
             <div className="grid gap-14 md:grid-cols-2">
               <div>
@@ -163,7 +235,7 @@ export default function Home() {
 
         {/* 7. About Tamika */}
         <section id="about" className="bg-sage py-24 px-6">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-8">The person behind the program</h2>
             <div className="space-y-6 text-teal/85 text-lg leading-relaxed mb-10">
               <p>
@@ -187,7 +259,7 @@ export default function Home() {
 
         {/* 8. The Investment */}
         <section className="bg-white py-24 px-6">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-6">The investment</h2>
             <p className="text-teal/75 text-lg leading-relaxed mb-12">
               Build &amp; Launch is a private-pay program. The full program fee is $2,000 CAD, paid in four monthly installments of $500.
@@ -216,7 +288,7 @@ export default function Home() {
 
         {/* 9. Testimonials */}
         <section className="bg-cream py-24 px-6">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-teal text-4xl mb-8">What participants and families say</h2>
             <div className="space-y-6 text-teal/75 text-lg leading-relaxed mb-10">
               <p>
@@ -234,7 +306,7 @@ export default function Home() {
 
         {/* 10. Get Started */}
         <section id="contact" className="bg-teal py-24 px-6">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-4xl mx-auto px-6">
             <h2 className="font-heading font-bold text-cream text-4xl mb-6">
               Let&apos;s find out if Build &amp; Launch is the right fit
             </h2>
@@ -336,7 +408,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-cream border-t border-sage/30 py-8 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto px-6">
           <p className="text-teal text-sm">
             &copy; 2026 Tamika Jackson Recreation and Consulting Services | Vaughan, Ontario | Recreation That Connects
           </p>
