@@ -29,3 +29,11 @@ h6 {
   outline: 2px solid #E8924B;
   outline-offset: 2px;
 }
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-animation {
+    display: none !important;
+  }
+}
+
