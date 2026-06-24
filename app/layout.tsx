@@ -40,10 +40,9 @@ export default function RootLayout({
             >
               Skip to main content
             </a>
-            <div className="px-[5%] py-3 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <img src="/logo.png" alt="TJRCS logo" className="w-28 h-28 rounded-full object-cover" />
-                <span className="font-heading font-bold text-[#F9F4EC] text-4xl tracking-tight">TJRCS</span>
+            <div className="px-[5%] py-3 flex items-center justify-between" style={{ minHeight: '100px' }}>
+              <div className="flex items-center">
+                <img src="/logo-new.png" alt="TJRCS logo" className="object-contain" style={{ mixBlendMode: 'screen', width: '130px', height: '130px', objectFit: 'contain' }} />
               </div>
               <div className="flex gap-3">
                 <a href="/" className="text-[#E8924B] text-[17px] font-bold border-2 border-[#E8924B] bg-transparent px-4 py-2 rounded-full hover:bg-[#E8924B] hover:text-[#1C3B3A] transition-colors focus-visible:outline-2 focus-visible:outline-[#F9F4EC] focus-visible:outline-offset-2">Home</a>
@@ -56,8 +55,8 @@ export default function RootLayout({
           {/* Social bar */}
           <div className="bg-[#162E2D]">
             <div className="px-[5%] h-12 flex items-center">
-              <span className="text-[#F9F4EC]/90 text-[15px] tracking-[1.2px] hidden sm:block">
-                Tamika Jackson Recreation and Consulting
+              <span className="text-[#F9F4EC]/90 text-[15px] tracking-[1.2px] hidden sm:block" style={{ background: 'none', boxShadow: 'none' }}>
+                Tamika Jackson Recreation and Consulting Services
               </span>
               <div className="flex items-center gap-6 ml-auto">
 
