@@ -7,94 +7,25 @@ export default function Home() {
         <HeroSection />
 
         {/* 2. The Gap */}
-        <section className="relative overflow-hidden w-full border-t border-sage/25 py-24 px-6" style={{ backgroundColor: '#FFFFFF' }}>
-          {[
-            { top: '5%',  left: '3%',  size: 14, opacity: 0.3  },
-            { top: '8%',  left: '12%', size: 22, opacity: 0.4  },
-            { top: '3%',  left: '25%', size: 18, opacity: 0.25 },
-            { top: '12%', left: '38%', size: 28, opacity: 0.5  },
-            { top: '6%',  left: '52%', size: 16, opacity: 0.35 },
-            { top: '9%',  left: '65%', size: 24, opacity: 0.45 },
-            { top: '4%',  left: '78%', size: 20, opacity: 0.3  },
-            { top: '11%', left: '88%', size: 30, opacity: 0.55 },
-            { top: '7%',  left: '95%', size: 14, opacity: 0.25 },
-            { top: '20%', left: '6%',  size: 26, opacity: 0.45 },
-            { top: '18%', left: '20%', size: 12, opacity: 0.2  },
-            { top: '22%', left: '33%', size: 32, opacity: 0.5  },
-            { top: '16%', left: '47%', size: 18, opacity: 0.3  },
-            { top: '24%', left: '60%', size: 22, opacity: 0.4  },
-            { top: '19%', left: '73%', size: 36, opacity: 0.6  },
-            { top: '21%', left: '85%', size: 16, opacity: 0.35 },
-            { top: '35%', left: '3%',  size: 20, opacity: 0.4  },
-            { top: '32%', left: '15%', size: 28, opacity: 0.5  },
-            { top: '38%', left: '28%', size: 14, opacity: 0.25 },
-            { top: '34%', left: '42%', size: 24, opacity: 0.45 },
-            { top: '37%', left: '55%', size: 18, opacity: 0.3  },
-            { top: '31%', left: '68%', size: 30, opacity: 0.55 },
-            { top: '36%', left: '80%', size: 22, opacity: 0.4  },
-            { top: '33%', left: '92%', size: 16, opacity: 0.35 },
-            { top: '50%', left: '8%',  size: 34, opacity: 0.55 },
-            { top: '48%', left: '22%', size: 20, opacity: 0.3  },
-            { top: '52%', left: '35%', size: 26, opacity: 0.45 },
-            { top: '47%', left: '48%', size: 12, opacity: 0.2  },
-            { top: '53%', left: '62%', size: 28, opacity: 0.5  },
-            { top: '49%', left: '75%', size: 18, opacity: 0.35 },
-            { top: '51%', left: '88%', size: 32, opacity: 0.6  },
-            { top: '65%', left: '4%',  size: 16, opacity: 0.3  },
-            { top: '62%', left: '18%', size: 24, opacity: 0.45 },
-            { top: '68%', left: '30%', size: 30, opacity: 0.5  },
-            { top: '64%', left: '44%', size: 14, opacity: 0.25 },
-            { top: '67%', left: '57%', size: 22, opacity: 0.4  },
-            { top: '63%', left: '70%', size: 36, opacity: 0.55 },
-            { top: '66%', left: '82%', size: 18, opacity: 0.35 },
-            { top: '69%', left: '94%', size: 26, opacity: 0.45 },
-            { top: '78%', left: '10%', size: 20, opacity: 0.4  },
-            { top: '80%', left: '24%', size: 28, opacity: 0.5  },
-            { top: '76%', left: '37%', size: 16, opacity: 0.3  },
-            { top: '82%', left: '50%', size: 34, opacity: 0.6  },
-            { top: '77%', left: '63%', size: 12, opacity: 0.2  },
-            { top: '81%', left: '76%', size: 24, opacity: 0.45 },
-            { top: '79%', left: '89%', size: 20, opacity: 0.35 },
-            { top: '92%', left: '5%',  size: 18, opacity: 0.3  },
-            { top: '90%', left: '20%', size: 30, opacity: 0.5  },
-            { top: '94%', left: '55%', size: 22, opacity: 0.4  },
-            { top: '91%', left: '85%', size: 26, opacity: 0.45 },
-          ].map((star, i) => (
-            <span
-              key={i}
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                top: star.top,
-                left: star.left,
-                fontSize: `${star.size}px`,
-                opacity: star.opacity,
-                color: '#E8924B',
-                pointerEvents: 'none',
-                userSelect: 'none',
-              }}
-            >
-              ✦
-            </span>
-          ))}
-          <div className="relative z-10 max-w-4xl mx-auto px-6">
-            <div className="bg-white/80 backdrop-blur-none rounded-2xl px-8 py-6 space-y-6">
-              <h2 className="font-heading font-bold text-teal text-4xl">Where most programs start &mdash; and why we don&apos;t</h2>
-              <p className="text-teal/75 text-lg leading-relaxed">
-                Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
-              </p>
-              <p className="text-teal/75 text-lg leading-relaxed">
-                Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
-              </p>
-            </div>
+        <section className="relative overflow-hidden w-full bg-[#1C3B3A] py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="relative z-10 px-[5%] space-y-6">
+            <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
+            <p className="text-white/80 text-xl leading-[1.8]">
+              Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
+            </p>
+            <p className="text-white/80 text-xl leading-[1.8]">
+              Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
+            </p>
           </div>
         </section>
 
         {/* 3. What Build & Launch Is */}
-        <section className="bg-white py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-8">What Build &amp; Launch is</h2>
-            <p className="text-teal/75 text-lg leading-relaxed mb-14">
+        <section className="relative bg-white py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What Build &amp; Launch is</h2>
+            <p className="text-teal/75 text-xl leading-[1.8] mb-14">
               Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -121,21 +52,22 @@ export default function Home() {
                 },
               ].map((card) => (
                 <div key={card.title} className="bg-cream rounded-lg p-7">
-                  <h3 className="font-heading font-bold text-teal text-lg mb-3">{card.title}</h3>
-                  <p className="text-teal/70 text-base leading-relaxed">{card.body}</p>
+                  <h3 className="font-heading font-semibold text-teal text-[26px] mb-3">{card.title}</h3>
+                  <p className="text-teal/70 text-lg leading-[1.7]">{card.body}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-12 text-teal font-medium text-lg">
+            <p className="mt-12 text-teal font-medium text-xl">
               $2,000 CAD &mdash; four monthly installments of $500
             </p>
           </div>
         </section>
 
         {/* 4. The Four Phases */}
-        <section className="bg-teal py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-cream text-4xl mb-14">The four phases</h2>
+        <section className="relative bg-teal py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-cream text-[36px] mb-14">The four phases</h2>
             <div className="grid gap-6 sm:grid-cols-2">
               {[
                 {
@@ -164,10 +96,10 @@ export default function Home() {
                 },
               ].map((phase) => (
                 <div key={phase.name} className="border border-cream/20 rounded-lg p-8">
-                  <p className="text-amber text-sm font-medium mb-1 tracking-wide">{phase.month}</p>
-                  <h3 className="font-heading font-bold text-cream text-2xl mb-3">{phase.name}</h3>
+                  <p className="text-amber text-lg font-medium mb-1 tracking-wide">{phase.month}</p>
+                  <h3 className="font-heading font-semibold text-cream text-[26px] mb-3">{phase.name}</h3>
                   <p className="text-cream/90 font-medium mb-2">{phase.tagline}</p>
-                  <p className="text-cream/65 text-base leading-relaxed">{phase.body}</p>
+                  <p className="text-cream/65 text-lg leading-[1.7]">{phase.body}</p>
                 </div>
               ))}
             </div>
@@ -175,10 +107,11 @@ export default function Home() {
         </section>
 
         {/* 5. The Journal */}
-        <section className="bg-cream py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-8">The Build &amp; Launch Journal</h2>
-            <div className="space-y-6 text-teal/75 text-lg leading-relaxed">
+        <section className="relative bg-cream py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The Build &amp; Launch Journal</h2>
+            <div className="space-y-6 text-teal/75 text-xl leading-[1.8]">
               <p>
                 From your very first session, you&apos;ll have a journal that&apos;s entirely yours. Every week it grows. An interest map. A strengths profile. Your business concept, your brand, your customer, your story &mdash; in your own words, built at your own pace across four months.
               </p>
@@ -191,12 +124,13 @@ export default function Home() {
         </section>
 
         {/* 6. Who This Is For */}
-        <section className="bg-white py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-14">Who this is for</h2>
+        <section className="relative bg-white py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-14">Who this is for</h2>
             <div className="grid gap-14 md:grid-cols-2">
               <div>
-                <h3 className="font-heading font-bold text-teal text-xl mb-7">
+                <h3 className="font-heading font-semibold text-teal text-[26px] mb-7">
                   If you&apos;re a young adult between 15 and 30
                 </h3>
                 <ul className="space-y-5">
@@ -206,7 +140,7 @@ export default function Home() {
                     "You want a space that's consistent, predictable, and genuinely built around who you are",
                     "You're ready to explore what a career could look like on your own terms",
                   ].map((item) => (
-                    <li key={item} className="flex gap-3 text-teal/75 leading-relaxed">
+                    <li key={item} className="flex gap-3 text-teal/75 text-xl leading-[1.8]">
                       <span className="text-amber shrink-0 mt-0.5 font-bold">&mdash;</span>
                       <span>{item}</span>
                     </li>
@@ -214,10 +148,10 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-heading font-bold text-teal text-xl mb-7">
+                <h3 className="font-heading font-semibold text-teal text-[26px] mb-7">
                   If you&apos;re a parent, caregiver, or support person
                 </h3>
-                <div className="space-y-4 text-teal/75 leading-relaxed">
+                <div className="space-y-4 text-teal/75 text-xl leading-[1.8]">
                   <p>
                     You want something that takes your young adult seriously &mdash; not a program that manages them, but one that genuinely invests in who they are and where they&apos;re going.
                   </p>
@@ -234,10 +168,11 @@ export default function Home() {
         </section>
 
         {/* 7. About Tamika */}
-        <section id="about" className="bg-sage py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-8">The person behind the program</h2>
-            <div className="space-y-6 text-teal/85 text-lg leading-relaxed mb-10">
+        <section id="about" className="relative bg-sage py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The person behind the program</h2>
+            <div className="space-y-6 text-teal/85 text-xl leading-[1.8] mb-10">
               <p>
                 Tamika Jackson is a Recreation Professional with over 15 years of experience building programs that help people discover what they&apos;re capable of.
               </p>
@@ -258,39 +193,145 @@ export default function Home() {
         </section>
 
         {/* 8. The Investment */}
-        <section className="bg-white py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-6">The investment</h2>
-            <p className="text-teal/75 text-lg leading-relaxed mb-12">
-              Build &amp; Launch is a private-pay program. The full program fee is $2,000 CAD, paid in four monthly installments of $500.
+        <section className="relative bg-cream py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+
+            {/* Header */}
+            <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold mb-3">The Investment</p>
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-5">
+              Build &amp; Launch Program &mdash; Founding Family Pricing
+            </h2>
+
+            {/* Beta banner */}
+            <div className="flex items-center gap-3 bg-teal rounded-full px-5 py-2 mb-5 w-fit">
+              <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full">Beta Phase</span>
+              <span className="text-cream text-xl">These rates are available to our founding families only &mdash; not available after launch</span>
+            </div>
+
+            {/* Subtext */}
+            <p className="text-teal/75 text-xl leading-[1.8] mb-10">
+              Three paths into the program. Every path starts with Discovery Month &mdash; a low-commitment entry point with the right to opt out after Month 1 at no further obligation.
             </p>
-            <h3 className="font-heading font-bold text-teal text-xl mb-6">What&apos;s included:</h3>
-            <ul className="space-y-5 mb-12">
-              {[
-                "16 weekly 1:1 sessions with Tamika — in person, approximately 60 minutes each",
-                "2 virtual group sessions with a small closed cohort",
-                "2 Community Venture Days — real-world experience with guided support",
-                "Your Build & Launch Journal — yours from Session 1, yours to keep",
-                "An end-of-program celebration marking everything you've built",
-                "A recreation professional who reviews your Participation Support Profile before every single session and adapts accordingly",
-              ].map((item) => (
-                <li key={item} className="flex gap-4 text-teal/75 leading-relaxed">
-                  <span className="text-amber shrink-0 font-bold mt-0.5">&#10003;</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-teal/55 text-sm leading-relaxed italic border-l-2 border-sage pl-4">
-              There are no hidden fees. No additional materials costs. No surprises. This program is not covered by OHIP or insurance. It is not a clinical service. It is a recreation-based mentorship program.
-            </p>
+
+            {/* Cards */}
+            <div className="flex flex-col lg:flex-row gap-6 items-stretch mb-10">
+
+              {/* Card 1 — Discovery Month */}
+              <div className="flex-1 flex flex-col bg-white border-2 border-sage rounded-xl p-8">
+                <span className="bg-sage text-teal text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Try first</span>
+                <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
+                <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
+                <p className="text-teal/60 text-lg mb-5">Entry point &mdash; Month 1 only</p>
+                <div className="bg-sage/20 border-l-4 border-sage rounded p-4 text-teal/75 text-lg leading-[1.7] mb-5">
+                  Prefer to split it? Pay as 2 &times; $100. Exit after Month 1 with no further obligation.
+                </div>
+                <hr className="border-sage/30 mb-5" />
+                <ul className="space-y-3 mb-6 flex-1">
+                  {[
+                    "4 weekly 1:1 sessions with Tamika",
+                    "Your Build & Launch Journal — starts Session 1",
+                    "Full Discover phase — strengths, interests, identity",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3 text-teal/80 text-lg leading-[1.7]">
+                      <span className="text-amber font-bold shrink-0">&#10003;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="bg-sage/10 rounded p-3 text-teal/65 text-lg italic mb-6">
+                  Opt-out right: exit after Month 1 &mdash; no further obligation.
+                </div>
+                <a href="#contact" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
+                  Start with Discovery Month
+                </a>
+              </div>
+
+              {/* Card 2 — Full Program Installments (featured) */}
+              <div className="flex-1 flex flex-col bg-teal rounded-xl p-8">
+                <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Founding family rate</span>
+                <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program &mdash; Installments</h3>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <p className="font-heading font-bold text-cream text-4xl">$1,500</p>
+                  <span className="text-cream/60 text-lg">total</span>
+                </div>
+                <p className="text-sage text-lg mb-5">4-month program, paid in stages</p>
+                <div className="bg-black/20 border-l-4 border-amber rounded p-4 text-sage text-lg leading-[1.7] mb-5">
+                  $200 at entry + 3 &times; $433 monthly
+                </div>
+                <hr className="border-cream/20 mb-5" />
+                <ul className="space-y-3 mb-6 flex-1">
+                  {[
+                    "16 weekly 1:1 sessions with Tamika",
+                    "2 virtual group sessions — small closed cohort",
+                    "2 Community Venture Days",
+                    "Build & Launch Journal — yours to keep",
+                    "End-of-program celebration",
+                    "Participation Support Profile reviewed before every session",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3 text-cream text-lg leading-[1.7]">
+                      <span className="text-amber font-bold shrink-0">&#10003;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="bg-black/20 rounded p-3 text-sage text-lg italic mb-6">
+                  Opt-out right included &mdash; exit after Month 1 with no further obligation.
+                </div>
+                <a href="#contact" className="block bg-amber text-white font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber/90 transition-colors">
+                  Start the conversation
+                </a>
+              </div>
+
+              {/* Card 3 — Full Program Paid in Full */}
+              <div className="flex-1 flex flex-col bg-white border-2 border-amber rounded-xl p-8">
+                <span className="border border-amber text-amber text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Best value</span>
+                <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program &mdash; Paid in Full</h3>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <p className="font-heading font-bold text-teal text-4xl">$1,200</p>
+                  <span className="text-amber text-lg">total</span>
+                </div>
+                <p className="text-teal/60 text-lg mb-5">Save $300 vs. the installment path</p>
+                <div className="bg-amber/10 border-l-4 border-amber rounded p-4 text-teal/75 text-lg leading-[1.7] mb-5">
+                  $200 at entry + $1,000 after Month 1
+                </div>
+                <hr className="border-amber/30 mb-5" />
+                <ul className="space-y-3 mb-6 flex-1">
+                  {[
+                    "Everything in the Installments plan",
+                    "Full program locked in after Month 1",
+                    "Lowest founding family rate — not available after launch",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3 text-teal/80 text-lg leading-[1.7]">
+                      <span className="text-amber font-bold shrink-0">&#10003;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="bg-sage/10 rounded p-3 text-teal/65 text-lg italic mb-6">
+                  Opt-out right included &mdash; $200 entry is the only charge until Month 2.
+                </div>
+                <a href="#contact" className="block border-2 border-amber text-amber font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber hover:text-white transition-colors">
+                  Start the conversation
+                </a>
+              </div>
+
+            </div>
+
+            {/* Footer note */}
+            <div className="bg-white border-l-4 border-sage p-5 text-teal/55 text-sm italic leading-relaxed">
+              No hidden fees. No materials costs. No surprises. These are founding family rates &mdash; available to the first cohort only. This program is not covered by OHIP or insurance. It is a recreation-based mentorship program, not a clinical service.
+            </div>
+
           </div>
         </section>
 
         {/* 9. Testimonials */}
-        <section className="bg-cream py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-teal text-4xl mb-8">What participants and families say</h2>
-            <div className="space-y-6 text-teal/75 text-lg leading-relaxed mb-10">
+        <section className="relative bg-cream py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What participants and families say</h2>
+            <div className="space-y-6 text-teal/75 text-xl leading-[1.8] mb-10">
               <p>
                 Build &amp; Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program &mdash; with their full permission, in their own words.
               </p>
@@ -305,18 +346,19 @@ export default function Home() {
         </section>
 
         {/* 10. Get Started */}
-        <section id="contact" className="bg-teal py-24 px-6">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-heading font-bold text-cream text-4xl mb-6">
+        <section id="contact" className="relative bg-teal py-20">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
+          <div className="px-[5%]">
+            <h2 className="font-heading font-bold text-cream text-[36px] mb-6">
               Let&apos;s find out if Build &amp; Launch is the right fit
             </h2>
-            <p className="text-cream/75 text-lg leading-relaxed mb-12">
+            <p className="text-cream/75 text-xl leading-[1.8] mb-12">
               You don&apos;t need to have everything figured out before you reach out. That&apos;s what the conversation is for. Fill out the short form below and Tamika will personally follow up with an invite to the next weekly Instagram Live info session &mdash; a free, no-commitment space where you can hear more about the program, ask questions, and get a real sense of whether this is the right fit for you and your family. There&apos;s no sales pitch. No pressure. Just an honest conversation.
             </p>
 
             <form className="space-y-6 mb-16">
               <div>
-                <label htmlFor="inquiry-name" className="block text-cream text-sm font-medium mb-2">Name</label>
+                <label htmlFor="inquiry-name" className="block text-cream text-lg font-medium mb-2">Name</label>
                 <input
                   id="inquiry-name"
                   type="text"
@@ -325,7 +367,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="inquiry-email" className="block text-cream text-sm font-medium mb-2">Email</label>
+                <label htmlFor="inquiry-email" className="block text-cream text-lg font-medium mb-2">Email</label>
                 <input
                   id="inquiry-email"
                   type="email"
@@ -334,7 +376,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="inquiry-role" className="block text-cream text-sm font-medium mb-2">Who is inquiring</label>
+                <label htmlFor="inquiry-role" className="block text-cream text-lg font-medium mb-2">Who is inquiring</label>
                 <select id="inquiry-role" className="w-full bg-white/10 border border-cream/25 text-cream rounded-md px-4 py-3 focus:border-cream/55 transition-colors appearance-none cursor-pointer">
                   <option value="" className="text-teal bg-white">Select one</option>
                   <option value="young-adult" className="text-teal bg-white">I&apos;m a young adult interested in the program</option>
@@ -343,7 +385,7 @@ export default function Home() {
                 </select>
               </div>
               <div>
-                <label htmlFor="inquiry-about" className="block text-cream text-sm font-medium mb-2">
+                <label htmlFor="inquiry-about" className="block text-cream text-lg font-medium mb-2">
                   Tell us about where you or your young adult is right now{" "}
                   <span className="text-cream/45 font-normal">(optional)</span>
                 </label>
@@ -355,7 +397,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="inquiry-referral" className="block text-cream text-sm font-medium mb-2">
+                <label htmlFor="inquiry-referral" className="block text-cream text-lg font-medium mb-2">
                   How did you hear about Build &amp; Launch{" "}
                   <span className="text-cream/45 font-normal">(optional)</span>
                 </label>
@@ -368,17 +410,17 @@ export default function Home() {
               </div>
               <button
                 type="submit"
-                className="bg-amber text-white font-medium px-8 py-4 rounded-md hover:bg-amber/90 transition-colors"
+                className="bg-amber text-white font-semibold text-[17px] px-8 py-4 rounded-md hover:bg-amber/90 transition-colors"
               >
                 Send my inquiry
               </button>
             </form>
 
             <div className="border-t border-cream/20 pt-12">
-              <h3 className="font-heading font-bold text-cream text-2xl mb-3">
+              <h3 className="font-heading font-semibold text-cream text-[26px] mb-3">
                 Not ready to fill out a form yet?
               </h3>
-              <p className="text-cream/75 text-lg leading-relaxed mb-8">
+              <p className="text-cream/75 text-xl leading-[1.8] mb-8">
                 Enter your email below to receive weekly Instagram Live invite links &mdash; no commitment, no inbox flooding. Just a standing invitation to come when you&apos;re ready.
               </p>
               <form className="flex flex-col sm:flex-row gap-4">
@@ -396,7 +438,7 @@ export default function Home() {
                 />
                 <button
                   type="submit"
-                  className="bg-amber text-white font-medium px-6 py-3 rounded-md hover:bg-amber/90 transition-colors whitespace-nowrap"
+                  className="bg-amber text-white font-semibold text-[17px] px-6 py-3 rounded-md hover:bg-amber/90 transition-colors whitespace-nowrap"
                 >
                   Keep me in the loop
                 </button>
@@ -407,8 +449,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-cream border-t border-sage/30 py-8 px-6">
-        <div className="max-w-4xl mx-auto px-6">
+      <footer className="bg-cream border-t border-sage/30 py-8">
+        <div className="px-[5%]">
           <p className="text-teal text-sm">
             &copy; 2026 Tamika Jackson Recreation and Consulting Services | Vaughan, Ontario | Recreation That Connects
           </p>
