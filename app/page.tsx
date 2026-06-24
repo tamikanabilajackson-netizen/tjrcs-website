@@ -3,7 +3,7 @@ import HeroSection from './components/HeroSection';
 export default function Home() {
   return (
     <>
-      <main id="main-content" className="overflow-x-hidden">
+      <main id="main-content">
         <HeroSection />
 
         {/* 2. The Gap */}
@@ -448,14 +448,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-cream border-t border-sage/30 py-8">
-        <div className="px-[5%]">
-          <p className="text-teal text-sm">
-            &copy; 2026 Tamika Jackson Recreation and Consulting Services | Vaughan, Ontario | Recreation That Connects
-          </p>
-        </div>
-      </footer>
     </>
   );
 }

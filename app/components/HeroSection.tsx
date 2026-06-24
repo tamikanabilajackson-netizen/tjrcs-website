@@ -71,7 +71,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#F9F4EC]" style={{ minHeight: '620px' }}>
+    <section className="relative bg-[#F9F4EC]" style={{ minHeight: '700px', overflow: 'visible' }}>
 
       {/* Left accent bar — amber → teal gradient */}
       <div
@@ -83,7 +83,7 @@ export default function HeroSection() {
       {/* Main content */}
       <div
         className="relative z-10 flex items-center py-20"
-        style={{ minHeight: '620px', paddingLeft: '5%', paddingRight: '5%' }}
+        style={{ minHeight: '700px', paddingLeft: '5%', paddingRight: '5%', overflow: 'visible' }}
       >
         <div style={{ maxWidth: '100%', width: '100%' }}>
 
@@ -103,17 +103,14 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* H1 — two-line headline */}
+          {/* H1 — Line 1 static, Line 2 looping typewriter */}
           <h1
             className="font-heading font-extrabold mb-8"
-            style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5.5rem)', lineHeight: 1.12 }}
+            style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5.5rem)', lineHeight: 1.12, wordWrap: 'break-word', overflow: 'visible' }}
           >
-            {/* Line 1 — always static */}
             <span className="block" style={{ color: '#1C3B3A' }}>
               {LINE1}
             </span>
-
-            {/* Line 2 — looping typewriter in amber */}
             <span className="block" style={{ color: '#E8924B', minHeight: '1.12em' }} aria-live="polite">
               {line2Text}
               {cursorVisible && (
