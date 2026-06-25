@@ -27,11 +27,11 @@ export default function NavBar() {
           Skip to main content
         </a>
 
-        <div className="px-[5%] py-4 flex items-center justify-between" style={{ minHeight: '72px' }}>
+        <div className="px-[5%] py-4 flex items-center justify-between" style={{ minHeight: '108px' }}>
 
           {/* Left: logo + business name */}
           <div className="flex items-center gap-3">
-            <img src="/TJRSCtrans1.svg" alt="TJRCS Logo" style={{ height: '80px', width: 'auto' }} />
+            <img src="/TJRSCtrans1.svg" alt="TJRCS Logo" style={{ height: '100px', width: 'auto' }} />
             <div className="flex flex-col leading-tight">
               <span style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, fontSize: '18px', color: '#1C3B3A' }}>
                 Tamika Jackson
