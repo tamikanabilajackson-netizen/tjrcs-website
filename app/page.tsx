@@ -199,7 +199,7 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row gap-6 items-stretch mb-10">
 
               {/* Card 1 — Discovery Month */}
-              <div className="flex-1 flex flex-col bg-white border-2 border-sage rounded-xl p-8">
+              <div className="pricing-card flex-1 flex flex-col bg-white border-2 border-sage rounded-xl p-8">
                 <span className="bg-sage text-teal text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Try first</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
                 <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
@@ -229,7 +229,7 @@ export default function Home() {
               </div>
 
               {/* Card 2 — Full Program Installments (featured) */}
-              <div className="flex-1 flex flex-col bg-teal rounded-xl p-8">
+              <div className="pricing-card-featured flex-1 flex flex-col bg-teal rounded-xl p-8">
                 <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Founding family rate</span>
                 <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program &mdash; Installments</h3>
                 <div className="flex items-baseline gap-2 mb-1">
@@ -265,7 +265,7 @@ export default function Home() {
               </div>
 
               {/* Card 3 — Full Program Paid in Full */}
-              <div className="flex-1 flex flex-col bg-white border-2 border-amber rounded-xl p-8">
+              <div className="pricing-card flex-1 flex flex-col bg-white border-2 border-amber rounded-xl p-8">
                 <span className="border border-amber text-amber text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Best value</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program &mdash; Paid in Full</h3>
                 <div className="flex items-baseline gap-2 mb-1">
