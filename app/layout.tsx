@@ -97,6 +97,14 @@ export default function RootLayout({
             </a>
 
           </div>
+
+          {/* Copyright */}
+          <div style={{ paddingTop: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#F9F4EC', fontSize: '12px', fontFamily: 'var(--font-lato)' }}>
+              &copy; 2026 Tamika Jackson Recreation and Consulting Services. All rights reserved.
+            </p>
+          </div>
+
         </footer>
 
       </body>
