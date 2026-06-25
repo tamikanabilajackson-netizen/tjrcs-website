@@ -1,4 +1,5 @@
 import HeroSection from './components/HeroSection';
+import WhoItIsFor from './components/WhoItIsFor';
 
 export default function Home() {
   return (
@@ -145,49 +146,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. Who This Is For */}
-        <section className="relative bg-white py-20">
-          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
-            <h2 className="font-heading font-bold text-teal text-[36px] mb-14">Who this is for</h2>
-            <div className="grid gap-14 md:grid-cols-2">
-              <div>
-                <h3 className="font-heading font-semibold text-teal text-[26px] mb-7">
-                  If you&apos;re a young adult between 15 and 30
-                </h3>
-                <ul className="space-y-5">
-                  {[
-                    "You're autistic, neurodivergent, or identify that way — with or without a formal diagnosis",
-                    "You've spent more time working around your challenges than building on your strengths",
-                    "You want a space that's consistent, predictable, and genuinely built around who you are",
-                    "You're ready to explore what a career could look like on your own terms",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-3 text-teal/75 text-xl leading-[1.8]">
-                      <span className="text-amber shrink-0 mt-0.5 font-bold">&mdash;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-heading font-semibold text-teal text-[26px] mb-7">
-                  If you&apos;re a parent, caregiver, or support person
-                </h3>
-                <div className="space-y-4 text-teal/75 text-xl leading-[1.8]">
-                  <p>
-                    You want something that takes your young adult seriously &mdash; not a program that manages them, but one that genuinely invests in who they are and where they&apos;re going.
-                  </p>
-                  <p>
-                    Build &amp; Launch is structured, professionally delivered, and grounded in therapeutic recreation principles. Every session follows a consistent format. Nothing significant happens without advance notice. And your young adult is supported at every stage.
-                  </p>
-                  <p className="text-teal/55 text-sm italic border-l-2 border-sage pl-4 mt-6">
-                    This is a private-pay program. It is not a clinical service, and it is not a substitute for therapy or regulated professional support. It is a recreation-based mentorship program delivered by a recreation professional who has lived a version of this journey herself.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhoItIsFor />
 
         {/* 7. About Tamika */}
         <section id="about" className="relative bg-sage py-20">
