@@ -40,6 +40,7 @@ export default function Home() {
             <p className="text-teal/75 text-[22px] leading-[1.8] mb-14">
               Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
+            {/* Top row — 3 cards */}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
@@ -54,6 +55,16 @@ export default function Home() {
                   title: "2 Community Venture Days",
                   body: "Real-world experience in your community — 4 to 6 hours each. Month 3 you explore with support. Month 4 you lead.",
                 },
+              ].map((card) => (
+                <div key={card.title} className="bg-cream rounded-lg p-7">
+                  <h3 className="font-heading font-semibold text-teal text-[26px] mb-3">{card.title}</h3>
+                  <p className="text-teal/70 text-[22px] leading-[1.8]">{card.body}</p>
+                </div>
+              ))}
+            </div>
+            {/* Bottom row — 2 cards, centered */}
+            <div className="grid gap-5 sm:grid-cols-2 mt-5 lg:w-2/3 lg:mx-auto">
+              {[
                 {
                   title: "Your Build & Launch Journal",
                   body: "Yours from Session 1. Every session adds a page. By the end of the program it becomes a complete portfolio of your ideas, your brand, your strengths, and your story.",
@@ -69,9 +80,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <p className="mt-12 text-teal font-medium text-xl">
-              $2,000 CAD &mdash; four monthly installments of $500
-            </p>
           </div>
         </section>
 

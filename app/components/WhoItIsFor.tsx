@@ -110,10 +110,10 @@ export default function WhoItIsFor() {
       <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
       <div className="px-[5%]">
         <h2 className="font-heading font-bold text-teal text-[36px] mb-14">Who this is for</h2>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 items-stretch">
 
           {/* Left card — young adult */}
-          <div style={{ background: '#FFFFFF', border: '2px solid rgba(28,59,58,0.3)', borderRadius: '12px', padding: '28px' }}>
+          <div style={{ background: '#FFFFFF', border: '2px solid rgba(28,59,58,0.3)', borderRadius: '12px', padding: '28px', height: '100%' }}>
             <h3 className="font-heading font-semibold text-teal text-[26px] mb-3">
               If you&apos;re a young adult between 15 and 30
             </h3>
@@ -131,7 +131,7 @@ export default function WhoItIsFor() {
           </div>
 
           {/* Right card — parent/caregiver */}
-          <div style={{ background: '#FFFFFF', border: '2px solid rgba(28,59,58,0.3)', borderRadius: '12px', padding: '28px' }}>
+          <div style={{ background: '#FFFFFF', border: '2px solid rgba(28,59,58,0.3)', borderRadius: '12px', padding: '28px', height: '100%' }}>
             <h3 className="font-heading font-semibold text-teal text-[26px] mb-3">
               If you&apos;re a parent, caregiver, or support person
             </h3>
