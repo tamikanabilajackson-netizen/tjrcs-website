@@ -35,10 +35,66 @@ h6 {
   50%       { opacity: 0; }
 }
 
-/* Respect prefers-reduced-motion */
+@keyframes starSparkle {
+  0%   { opacity: 0;   transform: scale(0.6); }
+  50%  { opacity: 0.8; transform: scale(1.2); }
+  100% { opacity: 0;   transform: scale(0.6); }
+}
+
+.star-sparkle {
+  animation: starSparkle var(--star-dur, 3s) var(--star-delay, 0s) ease-in-out infinite;
+  pointer-events: none;
+  user-select: none;
+  display: inline-block;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .sparkle-animation {
-    display: none !important;
+  .star-sparkle {
+    animation: none;
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* Section 4 — phase card default + hover */
+.phase-card {
+  background-color: #1a4a47 !important;
+  border: 1px solid rgba(232, 146, 75, 0.5) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 146, 75, 0.25), inset 0 2px 0 rgba(255, 255, 255, 0.07);
+  transform: translateY(-4px);
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.phase-card:hover {
+  background-color: #F9F4EC !important;
+  border: 1px solid #E8924B !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(232, 146, 75, 0.5);
+  transform: translateY(-10px);
+}
+
+.phase-card:hover .phase-title {
+  color: #1C3B3A;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.phase-card:hover .phase-tagline {
+  color: #1C3B3A;
+}
+
+.phase-card:hover .phase-body {
+  color: #1C3B3A;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase-card {
+    transform: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .phase-card:hover {
+    transform: none;
   }
 }
 

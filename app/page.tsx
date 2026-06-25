@@ -10,7 +10,18 @@ export default function Home() {
         <section className="relative overflow-hidden w-full bg-[#1C3B3A] py-20">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
           <div className="relative z-10 px-[5%] space-y-6">
-            <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
+            <div className="relative" style={{ overflow: 'visible' }}>
+              {/* ✦ Sparkle stars — 5 amber, 3 sage */}
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-16px', left: '2%',  fontSize: '22px', color: '#E8924B', '--star-dur': '2.4s', '--star-delay': '0s'   } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-12px', left: '26%', fontSize: '14px', color: '#9BB5A8', '--star-dur': '3.8s', '--star-delay': '1.5s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-10px', left: '55%', fontSize: '28px', color: '#E8924B', '--star-dur': '2.8s', '--star-delay': '0.8s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '6px',   left: '90%', fontSize: '12px', color: '#9BB5A8', '--star-dur': '4.5s', '--star-delay': '2.3s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '28px',  left: '-1%', fontSize: '16px', color: '#9BB5A8', '--star-dur': '2.6s', '--star-delay': '3.0s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-14px', left: '10%', fontSize: '18px', color: '#E8924B', '--star-dur': '3.2s', '--star-delay': '0.4s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-10px', left: '44%', fontSize: '10px', color: '#E8924B', '--star-dur': '1.8s', '--star-delay': '2.8s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-16px', left: '72%', fontSize: '24px', color: '#E8924B', '--star-dur': '3.6s', '--star-delay': '1.2s' } as React.CSSProperties}>✦</span>
+              <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
+            </div>
             <p className="text-white/80 text-xl leading-[1.8]">
               Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
             </p>
@@ -95,11 +106,11 @@ export default function Home() {
                   body: "You lead. You present. You celebrate.",
                 },
               ].map((phase) => (
-                <div key={phase.name} className="border border-cream/20 rounded-lg p-8">
+                <div key={phase.name} className="phase-card border border-cream/20 rounded-lg p-8">
                   <p className="text-amber text-lg font-medium mb-1 tracking-wide">{phase.month}</p>
-                  <h3 className="font-heading font-semibold text-cream text-[26px] mb-3">{phase.name}</h3>
-                  <p className="text-cream/90 font-medium mb-2">{phase.tagline}</p>
-                  <p className="text-cream/65 text-lg leading-[1.7]">{phase.body}</p>
+                  <h3 className="phase-title font-heading font-semibold text-cream text-[26px] mb-3">{phase.name}</h3>
+                  <p className="phase-tagline text-cream/90 font-medium mb-2">{phase.tagline}</p>
+                  <p className="phase-body text-cream/65 text-lg leading-[1.7]">{phase.body}</p>
                 </div>
               ))}
             </div>
@@ -110,7 +121,18 @@ export default function Home() {
         <section className="relative bg-cream py-20">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
           <div className="px-[5%]">
-            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The Build &amp; Launch Journal</h2>
+            <div className="relative" style={{ overflow: 'visible' }}>
+              {/* ✦ Sparkle stars — 5 amber, 3 sage */}
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-16px', left: '1%',  fontSize: '20px', color: '#E8924B', '--star-dur': '2.6s', '--star-delay': '0s'   } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-12px', left: '24%', fontSize: '12px', color: '#9BB5A8', '--star-dur': '4.2s', '--star-delay': '1.8s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-10px', left: '52%', fontSize: '28px', color: '#E8924B', '--star-dur': '3.0s', '--star-delay': '0.6s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '4px',   left: '88%', fontSize: '14px', color: '#9BB5A8', '--star-dur': '4.5s', '--star-delay': '2.5s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '24px',  left: '-1%', fontSize: '18px', color: '#9BB5A8', '--star-dur': '2.2s', '--star-delay': '3.0s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-14px', left: '12%', fontSize: '24px', color: '#E8924B', '--star-dur': '3.4s', '--star-delay': '0.3s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-10px', left: '46%', fontSize: '10px', color: '#E8924B', '--star-dur': '1.8s', '--star-delay': '2.1s' } as React.CSSProperties}>✦</span>
+              <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-16px', left: '70%', fontSize: '22px', color: '#E8924B', '--star-dur': '3.8s', '--star-delay': '1.4s' } as React.CSSProperties}>✦</span>
+              <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The Build &amp; Launch Journal</h2>
+            </div>
             <div className="space-y-6 text-teal/75 text-xl leading-[1.8]">
               <p>
                 From your very first session, you&apos;ll have a journal that&apos;s entirely yours. Every week it grows. An interest map. A strengths profile. Your business concept, your brand, your customer, your story &mdash; in your own words, built at your own pace across four months.
