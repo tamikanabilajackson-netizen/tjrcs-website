@@ -149,27 +149,76 @@ export default function Home() {
         <WhoItIsFor />
 
         {/* 7. About Tamika */}
-        <section id="about" className="relative bg-sage py-20">
+        <section id="about" className="relative" style={{ background: '#9BB5A8', padding: '80px 64px' }}>
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
-            <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The person behind the program</h2>
-            <div className="space-y-6 text-teal/85 text-xl leading-[1.8] mb-10">
-              <p>
-                Tamika Jackson is a Recreation Professional with over 15 years of experience building programs that help people discover what they&apos;re capable of.
-              </p>
-              <p>
-                She didn&apos;t plan for this work. She went to school to be a chemist. But a part-time job at a retirement home quietly changed everything.
-              </p>
-              <p>
-                She is also neurodivergent herself. Build &amp; Launch exists because of that experience. Not despite it.
-              </p>
-              <p>
-                Tamika built this program for the young adults who are still living what she lived &mdash; and to give them something she had to find her own way to: a space that starts with who they are, not what they need to overcome.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {/* Left: text */}
+            <div>
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-5">
+                <span style={{ display: 'inline-block', width: '50px', height: '2px', background: '#F9F4EC', flexShrink: 0 }} aria-hidden="true" />
+                <span style={{ color: '#F9F4EC', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+                  The Person Behind the Program
+                </span>
+              </div>
+
+              {/* Accent bar */}
+              <div style={{ width: '48px', height: '3px', background: '#E8924B', marginBottom: '20px' }} aria-hidden="true" />
+
+              {/* Heading */}
+              <h2 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '42px', color: '#F9F4EC', marginBottom: '24px', lineHeight: 1.1 }}>
+                Tamika Jackson
+              </h2>
+
+              {/* Body */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                  Tamika Jackson is a Recreation Professional with over 15 years of experience building programs that help people discover what they&apos;re capable of.
+                </p>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                  She didn&apos;t plan for this work. She went to school to be a chemist. But a part-time job at a retirement home quietly changed everything &mdash; and what she found there felt like something that was made for her.
+                </p>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                  She is also neurodivergent herself. Build &amp; Launch exists because of that experience. Not despite it.
+                </p>
+              </div>
+
+              {/* Link */}
+              <a
+                href="#about"
+                style={{ color: '#F9F4EC', fontWeight: 600, textDecoration: 'underline', textDecorationColor: '#E8924B', textUnderlineOffset: '4px' }}
+              >
+                Read Tamika&apos;s full story &rarr;
+              </a>
             </div>
-            <a href="#about" className="text-teal font-medium hover:underline underline-offset-4">
-              Read Tamika&apos;s full story &rarr;
-            </a>
+
+            {/* Right: photo + badge */}
+            <div style={{ position: 'relative' }}>
+              <img
+                src="/tamika.png"
+                alt="Tamika Jackson"
+                style={{ width: '100%', borderRadius: '16px', objectFit: 'cover', aspectRatio: '4/5', display: 'block' }}
+              />
+              {/* Badge — overlaps bottom-left of photo */}
+              <div style={{
+                position: 'absolute',
+                bottom: '24px',
+                left: '-16px',
+                background: '#1C3B3A',
+                borderRadius: '12px',
+                padding: '14px 18px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+              }}>
+                <p style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '28px', color: '#E8924B', margin: 0, lineHeight: 1 }}>
+                  15+
+                </p>
+                <p style={{ fontFamily: 'var(--font-lato)', fontSize: '11px', color: '#F9F4EC', letterSpacing: '1px', margin: 0, marginTop: '6px', textTransform: 'uppercase' }}>
+                  years of experience
+                </p>
+              </div>
+            </div>
+
           </div>
         </section>
 
