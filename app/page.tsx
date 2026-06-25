@@ -23,10 +23,10 @@ export default function Home() {
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-16px', left: '72%', fontSize: '24px', color: '#E8924B', '--star-dur': '3.6s', '--star-delay': '1.2s' } as React.CSSProperties}>✦</span>
               <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
             </div>
-            <p className="text-white/80 text-xl leading-[1.8]">
+            <p className="text-white/80 text-[22px] leading-[1.8]">
               Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
             </p>
-            <p className="text-white/80 text-xl leading-[1.8]">
+            <p className="text-white/80 text-[22px] leading-[1.8]">
               Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function Home() {
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
           <div className="px-[5%]">
             <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What Build &amp; Launch is</h2>
-            <p className="text-teal/75 text-xl leading-[1.8] mb-14">
+            <p className="text-teal/75 text-[22px] leading-[1.8] mb-14">
               Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -65,7 +65,7 @@ export default function Home() {
               ].map((card) => (
                 <div key={card.title} className="bg-cream rounded-lg p-7">
                   <h3 className="font-heading font-semibold text-teal text-[26px] mb-3">{card.title}</h3>
-                  <p className="text-teal/70 text-lg leading-[1.7]">{card.body}</p>
+                  <p className="text-teal/70 text-[22px] leading-[1.8]">{card.body}</p>
                 </div>
               ))}
             </div>
@@ -110,8 +110,8 @@ export default function Home() {
                 <div key={phase.name} className="phase-card border border-cream/20 rounded-lg p-8">
                   <p className="text-amber text-lg font-medium mb-1 tracking-wide">{phase.month}</p>
                   <h3 className="phase-title font-heading font-semibold text-cream text-[26px] mb-3">{phase.name}</h3>
-                  <p className="phase-tagline text-cream/90 font-medium mb-2">{phase.tagline}</p>
-                  <p className="phase-body text-cream/65 text-lg leading-[1.7]">{phase.body}</p>
+                  <p className="phase-tagline text-cream/90 font-medium mb-2 text-[22px] leading-[1.8]">{phase.tagline}</p>
+                  <p className="phase-body text-cream/65 text-[22px] leading-[1.8]">{phase.body}</p>
                 </div>
               ))}
             </div>
@@ -134,7 +134,7 @@ export default function Home() {
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-16px', left: '70%', fontSize: '22px', color: '#E8924B', '--star-dur': '3.8s', '--star-delay': '1.4s' } as React.CSSProperties}>✦</span>
               <h2 className="font-heading font-bold text-teal text-[36px] mb-8">The Build &amp; Launch Journal</h2>
             </div>
-            <div className="space-y-6 text-teal/75 text-xl leading-[1.8]">
+            <div className="space-y-6 text-teal/75 text-[22px] leading-[1.8]">
               <p>
                 From your very first session, you&apos;ll have a journal that&apos;s entirely yours. Every week it grows. An interest map. A strengths profile. Your business concept, your brand, your customer, your story &mdash; in your own words, built at your own pace across four months.
               </p>
@@ -170,13 +170,13 @@ export default function Home() {
 
               {/* Body */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC' }}>
                   Tamika Jackson is a Recreation Professional with over 15 years of experience building programs that help people discover what they&apos;re capable of.
                 </p>
-                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC' }}>
                   She didn&apos;t plan for this work. She went to school to be a chemist. But a part-time job at a retirement home quietly changed everything &mdash; and what she found there felt like something that was made for her.
                 </p>
-                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '17px', lineHeight: 1.85, color: '#F9F4EC' }}>
+                <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC' }}>
                   She is also neurodivergent herself. Build &amp; Launch exists because of that experience. Not despite it.
                 </p>
               </div>
@@ -233,11 +233,11 @@ export default function Home() {
             {/* Beta banner */}
             <div className="flex items-center gap-3 bg-teal rounded-full px-5 py-2 mb-5 w-fit">
               <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full">Beta Phase</span>
-              <span className="text-cream text-xl">These rates are available to our founding families only &mdash; not available after launch</span>
+              <span className="text-cream text-[22px]">These rates are available to our founding families only &mdash; not available after launch</span>
             </div>
 
             {/* Subtext */}
-            <p className="text-teal/75 text-xl leading-[1.8] mb-10">
+            <p className="text-teal/75 text-[22px] leading-[1.8] mb-10">
               Three paths into the program. Every path starts with Discovery Month &mdash; a low-commitment entry point with the right to opt out after Month 1 at no further obligation.
             </p>
 
@@ -249,8 +249,8 @@ export default function Home() {
                 <span className="bg-sage text-teal text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Try first</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
                 <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
-                <p className="text-teal/60 text-lg mb-5">Entry point &mdash; Month 1 only</p>
-                <div className="bg-sage/20 border-l-4 border-sage rounded p-4 text-teal/75 text-lg leading-[1.7] mb-5">
+                <p className="text-teal/60 text-[22px] mb-5">Entry point &mdash; Month 1 only</p>
+                <div className="bg-sage/20 border-l-4 border-sage rounded p-4 text-teal/75 text-[22px] leading-[1.8] mb-5">
                   Prefer to split it? Pay as 2 &times; $100. Exit after Month 1 with no further obligation.
                 </div>
                 <hr className="border-sage/30 mb-5" />
@@ -260,13 +260,13 @@ export default function Home() {
                     "Your Build & Launch Journal — starts Session 1",
                     "Full Discover phase — strengths, interests, identity",
                   ].map((item) => (
-                    <li key={item} className="flex gap-3 text-teal/80 text-lg leading-[1.7]">
+                    <li key={item} className="flex gap-3 text-teal/80 text-[22px] leading-[1.8]">
                       <span className="text-amber font-bold shrink-0">&#10003;</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="bg-sage/10 rounded p-3 text-teal/65 text-lg italic mb-6">
+                <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
                   Opt-out right: exit after Month 1 &mdash; no further obligation.
                 </div>
                 <a href="#contact" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
@@ -280,10 +280,10 @@ export default function Home() {
                 <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program &mdash; Installments</h3>
                 <div className="flex items-baseline gap-2 mb-1">
                   <p className="font-heading font-bold text-cream text-4xl">$1,500</p>
-                  <span className="text-cream/60 text-lg">total</span>
+                  <span className="text-cream/60 text-[22px]">total</span>
                 </div>
-                <p className="text-sage text-lg mb-5">4-month program, paid in stages</p>
-                <div className="bg-black/20 border-l-4 border-amber rounded p-4 text-sage text-lg leading-[1.7] mb-5">
+                <p className="text-sage text-[22px] mb-5">4-month program, paid in stages</p>
+                <div className="bg-black/20 border-l-4 border-amber rounded p-4 text-sage text-[22px] leading-[1.8] mb-5">
                   $200 at entry + 3 &times; $433 monthly
                 </div>
                 <hr className="border-cream/20 mb-5" />
@@ -296,13 +296,13 @@ export default function Home() {
                     "End-of-program celebration",
                     "Participation Support Profile reviewed before every session",
                   ].map((item) => (
-                    <li key={item} className="flex gap-3 text-cream text-lg leading-[1.7]">
+                    <li key={item} className="flex gap-3 text-cream text-[22px] leading-[1.8]">
                       <span className="text-amber font-bold shrink-0">&#10003;</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="bg-black/20 rounded p-3 text-sage text-lg italic mb-6">
+                <div className="bg-black/20 rounded p-3 text-sage text-[22px] italic mb-6">
                   Opt-out right included &mdash; exit after Month 1 with no further obligation.
                 </div>
                 <a href="#contact" className="block bg-amber text-white font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber/90 transition-colors">
@@ -316,10 +316,10 @@ export default function Home() {
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program &mdash; Paid in Full</h3>
                 <div className="flex items-baseline gap-2 mb-1">
                   <p className="font-heading font-bold text-teal text-4xl">$1,200</p>
-                  <span className="text-amber text-lg">total</span>
+                  <span className="text-amber text-[22px]">total</span>
                 </div>
-                <p className="text-teal/60 text-lg mb-5">Save $300 vs. the installment path</p>
-                <div className="bg-amber/10 border-l-4 border-amber rounded p-4 text-teal/75 text-lg leading-[1.7] mb-5">
+                <p className="text-teal/60 text-[22px] mb-5">Save $300 vs. the installment path</p>
+                <div className="bg-amber/10 border-l-4 border-amber rounded p-4 text-teal/75 text-[22px] leading-[1.8] mb-5">
                   $200 at entry + $1,000 after Month 1
                 </div>
                 <hr className="border-amber/30 mb-5" />
@@ -329,13 +329,13 @@ export default function Home() {
                     "Full program locked in after Month 1",
                     "Lowest founding family rate — not available after launch",
                   ].map((item) => (
-                    <li key={item} className="flex gap-3 text-teal/80 text-lg leading-[1.7]">
+                    <li key={item} className="flex gap-3 text-teal/80 text-[22px] leading-[1.8]">
                       <span className="text-amber font-bold shrink-0">&#10003;</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="bg-sage/10 rounded p-3 text-teal/65 text-lg italic mb-6">
+                <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
                   Opt-out right included &mdash; $200 entry is the only charge until Month 2.
                 </div>
                 <a href="#contact" className="block border-2 border-amber text-amber font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber hover:text-white transition-colors">
@@ -373,10 +373,10 @@ export default function Home() {
             </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '28px' }}>
-              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '20px', lineHeight: 1.8 }}>
+              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '22px', lineHeight: 1.8 }}>
                 Build &amp; Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program &mdash; with their full permission, in their own words.
               </p>
-              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '20px', lineHeight: 1.8 }}>
+              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '22px', lineHeight: 1.8 }}>
                 In the meantime, the best way to get a real sense of the program is to join one of our weekly Instagram Live info sessions. Come with questions. Bring your young adult if you&apos;d like. No commitment required.
               </p>
             </div>
@@ -402,15 +402,15 @@ export default function Home() {
               <span style={{ display: 'inline-block', background: '#E8924B', color: '#F9F4EC', fontSize: '10px', fontFamily: 'var(--font-montserrat)', fontWeight: 700, letterSpacing: '1px', padding: '4px 12px', borderRadius: '999px', marginBottom: '16px', width: 'fit-content' }}>
                 Strengths first
               </span>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#1C3B3A', marginBottom: '16px', flex: 1 }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', marginBottom: '16px', flex: 1 }}>
                 Career planning that starts with what someone can&apos;t do isn&apos;t career planning. It&apos;s a ceiling. Build &amp; Launch starts with what they love &mdash; and builds from there.
               </p>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#1C3B3A', marginBottom: '8px', fontStyle: 'italic' }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', marginBottom: '8px', fontStyle: 'italic' }}>
                 And somehow that turns into:
               </p>
               <ul style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {['Confidence', 'A real vision for the future', "Something that's actually theirs"].map((item) => (
-                  <li key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#1C3B3A' }}>
+                  <li key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A' }}>
                     <span style={{ color: '#E8924B', fontWeight: 700, flexShrink: 0 }}>&#10003;</span>
                     <span>{item}</span>
                   </li>
@@ -426,7 +426,7 @@ export default function Home() {
               <h3 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '17px', color: '#F9F4EC', lineHeight: 1.4, marginBottom: '16px' }}>
                 YOUR YOUNG PERSON DOESN&apos;T NEED ONE MORE WORKSHEET.
               </h3>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
                 They need someone who sees their strengths before they see their diagnosis. That&apos;s what Build &amp; Launch is for. A 4-month, 1:1 recreation-based program designed around who they already are.
               </p>
               <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
@@ -439,7 +439,7 @@ export default function Home() {
               <span style={{ display: 'inline-block', background: '#E8924B', color: '#F9F4EC', fontSize: '10px', fontFamily: 'var(--font-montserrat)', fontWeight: 700, letterSpacing: '1px', padding: '4px 12px', borderRadius: '999px', marginBottom: '16px', width: 'fit-content' }}>
                 15+ years in recreation
               </span>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
                 15+ years in recreation taught me one thing families never expect to hear: Joy is a valid starting point. When we build from what a person genuinely loves, something shifts. They lean in. They try things. They start to imagine a future that&apos;s actually theirs.
               </p>
               <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
@@ -452,7 +452,7 @@ export default function Home() {
               <h3 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '17px', color: '#1C3B3A', lineHeight: 1.4, marginBottom: '16px' }}>
                 IF YOU&apos;VE BEEN TOLD YOUR CHILD ISN&apos;T READY &mdash;
               </h3>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '13px', lineHeight: 1.75, color: '#1C3B3A', flex: 1, marginBottom: '20px' }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', flex: 1, marginBottom: '20px' }}>
                 I&apos;d ask: ready by whose definition? Build &amp; Launch meets participants exactly where they are &mdash; building confidence, exploring strengths, and taking real steps toward independence. We start with possibility, not limitations.
               </p>
               <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
@@ -470,7 +470,7 @@ export default function Home() {
             <h2 className="font-heading font-bold text-cream text-[36px] mb-6">
               Let&apos;s find out if Build &amp; Launch is the right fit
             </h2>
-            <p className="text-cream/75 text-xl leading-[1.8] mb-12">
+            <p className="text-cream/75 text-[22px] leading-[1.8] mb-12">
               You don&apos;t need to have everything figured out before you reach out. That&apos;s what the conversation is for. Fill out the short form below and Tamika will personally follow up with an invite to the next weekly Instagram Live info session &mdash; a free, no-commitment space where you can hear more about the program, ask questions, and get a real sense of whether this is the right fit for you and your family. There&apos;s no sales pitch. No pressure. Just an honest conversation.
             </p>
 
@@ -538,7 +538,7 @@ export default function Home() {
               <h3 className="font-heading font-semibold text-cream text-[26px] mb-3">
                 Not ready to fill out a form yet?
               </h3>
-              <p className="text-cream/75 text-xl leading-[1.8] mb-8">
+              <p className="text-cream/75 text-[22px] leading-[1.8] mb-8">
                 Enter your email below to receive weekly Instagram Live invite links &mdash; no commitment, no inbox flooding. Just a standing invitation to come when you&apos;re ready.
               </p>
               <form className="flex flex-col sm:flex-row gap-4">

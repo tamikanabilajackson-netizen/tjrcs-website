@@ -146,7 +146,7 @@ export default function WhoItIsFor() {
                 )
               )}
             </ul>
-            <p className="text-teal/55 text-sm italic border-l-2 border-teal pl-4">
+            <p className="text-teal/55 italic border-l-2 border-teal pl-4" style={{ fontSize: '18px', lineHeight: 1.8 }}>
               This is a private-pay program. It is not a clinical service, and it is not a substitute for therapy or regulated professional support. It is a recreation-based mentorship program delivered by a recreation professional who has lived a version of this journey herself.
             </p>
           </div>
