@@ -160,12 +160,12 @@ export default function HeroSection() {
             className="transition-all duration-700"
             style={{ opacity: trustIn ? 1 : 0, transform: trustIn ? 'translateY(0)' : 'translateY(10px)' }}
           >
-            <div className="flex items-center gap-3 text-teal/55 text-[17px]">
+            <div className="flex items-center gap-3 text-teal/55 text-[17px]" style={{ flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
               <span>Ages 15&ndash;30</span>
               <span className="w-1.5 h-1.5 rounded-full bg-teal/30" aria-hidden="true" />
               <span>1:1 sessions</span>
               <span className="w-1.5 h-1.5 rounded-full bg-teal/30" aria-hidden="true" />
-              <span>Vaughan, Ontario</span>
+              <span>Ajax, Pickering, Markham, Oshawa, Vaughan in Ontario, Canada</span>
             </div>
           </div>
 
