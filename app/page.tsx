@@ -158,16 +158,13 @@ export default function Home() {
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-5">
                 <span style={{ display: 'inline-block', width: '50px', height: '2px', background: '#F9F4EC', flexShrink: 0 }} aria-hidden="true" />
-                <span style={{ color: '#F9F4EC', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+                <span style={{ color: '#F9F4EC', fontSize: '15px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
                   The Person Behind the Program
                 </span>
               </div>
 
-              {/* Accent bar */}
-              <div style={{ width: '48px', height: '3px', background: '#E8924B', marginBottom: '20px' }} aria-hidden="true" />
-
               {/* Heading */}
-              <h2 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '42px', color: '#F9F4EC', marginBottom: '24px', lineHeight: 1.1 }}>
+              <h2 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '42px', color: '#1C3B3A', marginBottom: '24px', lineHeight: 1.1 }}>
                 Tamika Jackson
               </h2>
 
