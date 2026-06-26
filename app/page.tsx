@@ -403,7 +403,7 @@ export default function Home() {
           </div>
 
           {/* 2×2 card grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridAutoRows: '1fr', gap: '32px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Card 1 — cream */}
             <div className="testimonial-card testimonial-card-cream" style={{ background: '#F9F4EC', border: '1.5px solid #1C3B3A', borderRadius: '16px', boxShadow: '0 6px 28px rgba(28,59,58,0.12)', padding: '28px', display: 'flex', flexDirection: 'column' }}>
