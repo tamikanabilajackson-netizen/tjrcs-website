@@ -1,52 +1,59 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function AboutContent() {
+
+  const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
     const heroText = 'A Recreation Professional, a founder.';
     const heroEl = document.getElementById('hero-typewriter');
-    const heroCursor = document.getElementById('hero-cursor');
 
-    if (heroEl && heroCursor) {
+    if (heroEl) {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (prefersReduced) {
         heroEl.textContent = heroText;
-        heroCursor.style.display = 'none';
-      } else {
-        heroCursor.style.animation = 'blink 0.75s step-end infinite';
+        setCursorVisible(false);
+        return;
+      }
 
-        const typeLoop = () => {
-          let i = 0;
-          heroEl.textContent = '';
+      const typeLoop = () => {
+        let i = 0;
+        heroEl.textContent = '';
+        setCursorVisible(true);
 
-          const typing = () => {
-            if (i <= heroText.length) {
-              heroEl.textContent = heroText.slice(0, i);
-              i++;
-              setTimeout(typing, 45);
-            } else {
+        const typing = () => {
+          if (i < heroText.length) {
+            i++;
+            heroEl.textContent = heroText.slice(0, i);
+            setTimeout(typing, 120);
+          } else {
+            setTimeout(() => {
+              setCursorVisible(false);
               setTimeout(() => {
+                setCursorVisible(true);
+                let j = heroText.length;
                 const erasing = () => {
-                  if (i > 0) {
-                    heroEl.textContent = heroText.slice(0, i);
-                    i--;
-                    setTimeout(erasing, 18);
+                  if (j > 0) {
+                    j--;
+                    heroEl.textContent = heroText.slice(0, j);
+                    setTimeout(erasing, 55);
                   } else {
+                    setCursorVisible(false);
                     setTimeout(typeLoop, 600);
                   }
                 };
                 erasing();
-              }, 2500);
-            }
-          };
-          typing();
+              }, 2700);
+            }, 800);
+          }
         };
+        typing();
+      };
 
-        typeLoop();
-      }
+      typeLoop();
     }
 
     const quotes = [
@@ -91,11 +98,6 @@ export default function AboutContent() {
                   el.textContent = text.slice(0, i);
                   i++;
                   setTimeout(tick, 45);
-                } else {
-                  setTimeout(() => {
-                    cursor.style.opacity = '0';
-                    cursor.style.animation = 'none';
-                  }, 900);
                 }
               };
               tick();
@@ -115,7 +117,7 @@ export default function AboutContent() {
       {/* ── 1. Hero / Opening ── bg-cream ───────────────────────────────── */}
       <section
         aria-label="Introduction"
-        className="relative overflow-hidden bg-[#F9F4EC] py-20 px-[5%]"
+        className="relative overflow-hidden bg-[#F9F4EC] pt-20 pb-10 px-[5%]"
       >
         <div
           className="absolute left-0 top-0 bottom-0 w-[5px]"
@@ -123,29 +125,25 @@ export default function AboutContent() {
           aria-hidden="true"
         />
 
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-6">
-          <span style={{ display: 'inline-block', width: '28px', height: '1px', background: '#E8924B', flexShrink: 0 }} aria-hidden="true" />
-          <span style={{ color: '#E8924B', fontSize: '11px', fontFamily: 'var(--font-lato)', fontWeight: 400, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
-            About Tamika Jackson
-          </span>
-        </div>
-
-        {/* Headline */}
+{/* Headline */}
         <h1
           className="font-heading"
           style={{ fontWeight: 800, fontSize: 'clamp(2.8rem, 5.5vw, 5.5rem)', lineHeight: 1.12, color: '#1C3B3A', letterSpacing: '-0.5px', marginBottom: '32px' }}
         >
           I&apos;m Tamika Jackson.<br />
-          <span id="hero-typewriter" style={{ fontSize: 'clamp(2.02rem, 3.96vw, 3.96rem)', lineHeight: 1.12, color: '#E8924B', minHeight: '1.12em', fontFamily: 'var(--font-montserrat)', fontWeight: 800, display: 'block' }}></span>
-          <span id="hero-cursor" style={{
-            display: 'inline',
-            width: '3px',
-            height: '0.85em',
-            background: '#E8924B',
-            marginLeft: '4px',
-            verticalAlign: 'middle',
-          }}></span>
+          <span style={{ display: 'block', color: '#E8924B', minHeight: '1.12em', fontSize: 'clamp(2.02rem, 3.96vw, 3.96rem)', lineHeight: 1.12 }}>
+            <span id="hero-typewriter"></span>{cursorVisible && (
+              <span style={{
+                display: 'inline-block',
+                width: '3px',
+                height: '0.85em',
+                background: '#E8924B',
+                marginLeft: '4px',
+                verticalAlign: 'middle',
+                animation: 'blink 0.75s step-end infinite',
+              }} aria-hidden="true" />
+            )}
+          </span>
         </h1>
 
         {/* Body */}
@@ -158,23 +156,6 @@ export default function AboutContent() {
           </p>
         </div>
 
-        {/* Trust bar */}
-        <div style={{ marginTop: '36px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontFamily: 'var(--font-lato)', color: '#6a7a6a' }}>
-            <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#9BB5A8', flexShrink: 0 }} />
-            Recreation Professional
-          </div>
-          <div style={{ width: '1px', height: '14px', background: '#c8d4c8' }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontFamily: 'var(--font-lato)', color: '#6a7a6a' }}>
-            <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#9BB5A8', flexShrink: 0 }} />
-            15+ years experience
-          </div>
-          <div style={{ width: '1px', height: '14px', background: '#c8d4c8' }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontFamily: 'var(--font-lato)', color: '#6a7a6a' }}>
-            <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#9BB5A8', flexShrink: 0 }} />
-            Vaughan, Ontario
-          </div>
-        </div>
 
       </section>
 
@@ -196,7 +177,7 @@ export default function AboutContent() {
               style={{ display: 'inline-block', width: '50px', height: '2px', background: '#E8924B', flexShrink: 0 }}
               aria-hidden="true"
             />
-            <span style={{ color: '#E8924B', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+            <span style={{ color: '#E8924B', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
               The origin
             </span>
           </div>
@@ -215,11 +196,11 @@ export default function AboutContent() {
               </p>
 
               {/* Pullquote 1 */}
-              <blockquote style={{ borderLeft: '3px solid #E8924B', background: '#F9F4EC', padding: '24px 32px', borderRadius: '0 8px 8px 0' }}>
-                <p className="font-heading font-bold text-teal text-[26px]" style={{ lineHeight: 1.35, marginBottom: '12px' }}>
+              <blockquote style={{ background: '#F9F4EC', borderLeft: '3px solid #E8924B', padding: '24px 32px', margin: '28px 0' }}>
+                <p style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, fontSize: '22px', color: '#1C3B3A', lineHeight: 1.4, fontStyle: 'normal', margin: 0 }}>
                   &ldquo;Would you like to be an activity assistant?&rdquo;
                 </p>
-                <p style={{ fontFamily: 'var(--font-lato)', fontStyle: 'italic', fontSize: '16px', color: '#9BB5A8', margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font-lato)', fontStyle: 'italic', fontSize: '16px', color: '#9BB5A8', margin: 0, marginTop: '10px' }}>
                   a question that changed everything
                 </p>
               </blockquote>
@@ -229,8 +210,8 @@ export default function AboutContent() {
               </p>
 
               {/* Pullquote 2 */}
-              <blockquote style={{ borderLeft: '3px solid #E8924B', paddingLeft: '20px' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontStyle: 'italic', fontSize: '20px', color: '#E8924B', lineHeight: 1.5, margin: 0 }}>
+              <blockquote style={{ background: '#F9F4EC', borderLeft: '3px solid #E8924B', padding: '24px 32px', margin: '28px 0' }}>
+                <p style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, fontSize: '22px', color: '#1C3B3A', lineHeight: 1.4, fontStyle: 'normal', margin: 0 }}>
                   &ldquo;But you don&apos;t have a job. And in the meantime, you can make extra money.&rdquo;
                 </p>
               </blockquote>
@@ -259,6 +240,7 @@ export default function AboutContent() {
             borderRadius: '10px',
             padding: '32px 40px',
             overflow: 'hidden',
+            marginTop: '16px',
           }}>
             <div style={{
               position: 'absolute',
@@ -266,38 +248,23 @@ export default function AboutContent() {
               width: '4px',
               background: '#E8924B',
             }} />
-            <p
-              id="quote-a"
-              style={{
+            <p style={{ margin: 0 }}>
+              <span id="quote-a" style={{
                 fontFamily: 'var(--font-montserrat)',
-                fontWeight: 800,
-                fontSize: '22px',
+                fontWeight: 700,
+                fontSize: '32px',
                 color: '#F9F4EC',
-                lineHeight: 1.35,
-                margin: 0,
-                minHeight: '1.35em',
-              }}
-            />
-            <span
-              id="cursor-a"
-              style={{
+                lineHeight: 1.35
+              }}></span><span id="cursor-a" style={{
                 display: 'inline-block',
-                width: '2px',
-                height: '1em',
-                background: '#E8924B',
-                marginLeft: '2px',
+                width: '3px',
+                height: '0.85em',
+                background: '#F9F4EC',
+                marginLeft: '4px',
                 verticalAlign: 'middle',
-              }}
-            />
-            <p style={{
-              fontSize: '11px',
-              color: '#9BB5A8',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              marginTop: '12px',
-              marginBottom: 0,
-            }}>
-              Tamika Jackson
+                animation: 'blink 0.75s step-end infinite',
+                opacity: 0,
+              }} aria-hidden="true"></span>
             </p>
           </div>
 
@@ -326,7 +293,7 @@ export default function AboutContent() {
               style={{ display: 'inline-block', width: '50px', height: '2px', background: '#E8924B', flexShrink: 0 }}
               aria-hidden="true"
             />
-            <span style={{ color: '#E8924B', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+            <span style={{ color: '#E8924B', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
               The neurodivergent thread
             </span>
           </div>
@@ -359,11 +326,13 @@ export default function AboutContent() {
             gridTemplateColumns: '1fr 1fr',
             borderRadius: '10px',
             overflow: 'hidden',
-            minHeight: '200px',
+            minHeight: '400px',
           }}>
             <div style={{
               background: '#E8924B',
               padding: '32px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -376,29 +345,22 @@ export default function AboutContent() {
                 lineHeight: 1,
                 marginBottom: '8px',
               }}>&ldquo;</div>
-              <p
-                id="quote-b"
-                style={{
+              <p style={{ margin: 0 }}>
+                <span id="quote-b" style={{
                   fontFamily: 'var(--font-montserrat)',
                   fontWeight: 800,
-                  fontSize: '17px',
+                  fontSize: '36px',
                   color: '#fff',
-                  lineHeight: 1.45,
-                  margin: 0,
-                  minHeight: '1.45em',
-                }}
-              />
-              <span
-                id="cursor-b"
-                style={{
+                  lineHeight: 1.4,
+                }}></span><span id="cursor-b" style={{
                   display: 'inline-block',
                   width: '2px',
                   height: '1em',
                   background: '#fff',
                   marginLeft: '2px',
                   verticalAlign: 'middle',
-                }}
-              />
+                }}></span>
+              </p>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -433,7 +395,7 @@ export default function AboutContent() {
               style={{ display: 'inline-block', width: '50px', height: '2px', background: '#F9F4EC', flexShrink: 0 }}
               aria-hidden="true"
             />
-            <span style={{ color: '#F9F4EC', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+            <span style={{ color: '#F9F4EC', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
               Why Build &amp; Launch
             </span>
           </div>
@@ -482,29 +444,23 @@ export default function AboutContent() {
               userSelect: 'none',
             }}>&ldquo;</div>
             <div style={{ paddingTop: '6px' }}>
-              <p
-                id="quote-c"
-                style={{
+              <p style={{ margin: 0 }}>
+                <span id="quote-c" style={{
                   fontFamily: 'var(--font-montserrat)',
                   fontWeight: 700,
-                  fontSize: '20px',
+                  fontSize: '36px',
                   color: '#E8924B',
-                  lineHeight: 1.45,
-                  margin: 0,
-                  minHeight: '1.45em',
-                }}
-              />
-              <span
-                id="cursor-c"
-                style={{
+                  lineHeight: 1.4
+                }}></span><span id="cursor-c" style={{
                   display: 'inline-block',
-                  width: '2px',
-                  height: '1em',
+                  width: '3px',
+                  height: '0.85em',
                   background: '#E8924B',
-                  marginLeft: '2px',
+                  marginLeft: '4px',
                   verticalAlign: 'middle',
-                }}
-              />
+                  opacity: 0,
+                }} aria-hidden="true"></span>
+              </p>
             </div>
           </div>
 
@@ -528,7 +484,7 @@ export default function AboutContent() {
               style={{ display: 'inline-block', width: '50px', height: '2px', background: '#E8924B', flexShrink: 0 }}
               aria-hidden="true"
             />
-            <span style={{ color: '#E8924B', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+            <span style={{ color: '#E8924B', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
               How she works
             </span>
           </div>
@@ -569,7 +525,7 @@ export default function AboutContent() {
               style={{ display: 'inline-block', width: '50px', height: '2px', background: '#F9F4EC', flexShrink: 0 }}
               aria-hidden="true"
             />
-            <span style={{ color: '#F9F4EC', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
+            <span style={{ color: '#F9F4EC', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
               Let&apos;s continue the conversation
             </span>
           </div>
