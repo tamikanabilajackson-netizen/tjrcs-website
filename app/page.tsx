@@ -361,111 +361,65 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. Testimonials */}
-        <section className="relative" style={{ background: '#ffffff', padding: '80px 72px' }}>
-          <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-
-          {/* Top content */}
-          <div style={{ marginBottom: '48px' }}>
-
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3" style={{ marginBottom: '20px' }}>
-              <span style={{ display: 'inline-block', width: '50px', height: '2px', background: '#E8924B', flexShrink: 0 }} aria-hidden="true" />
-              <span style={{ color: '#E8924B', fontSize: '13px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
-                Testimonials
-              </span>
-            </div>
-
-            <h2 className="font-heading font-bold text-teal text-[36px]" style={{ marginBottom: '24px' }}>
-              What participants and families say
-            </h2>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '28px' }}>
-              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '22px', lineHeight: 1.8 }}>
-                Build &amp; Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program &mdash; with their full permission, in their own words.
-              </p>
-              <p style={{ color: 'rgba(28,59,58,0.75)', fontSize: '22px', lineHeight: 1.8 }}>
-                In the meantime, the best way to get a real sense of the program is to join one of our weekly Instagram Live info sessions. Come with questions. Bring your young adult if you&apos;d like. No commitment required.
-              </p>
-            </div>
-
-            <a href="#contact" style={{ color: '#1C3B3A', fontWeight: 600, textDecoration: 'underline', textDecorationColor: '#1C3B3A', textUnderlineOffset: '4px' }}>
-              Fill out the inquiry form to receive your invite link &rarr;
-            </a>
-
-            {/* Sage divider */}
-            <div style={{ width: '100%', height: '1px', background: '#9BB5A8', margin: '32px 0 16px' }} aria-hidden="true" />
-
-            {/* Sage sub-eyebrow */}
-            <p style={{ color: '#9BB5A8', fontSize: '11px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase' }}>
-              From the Build &amp; Launch philosophy
-            </p>
+        {/* Section 9 — Testimonials */}
+        <section className="py-20 px-[5%] bg-[#F9F4EC]">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="w-7 h-[1px] bg-[#E8924B]"></div>
+            <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold">Testimonials</p>
           </div>
+          <h2 className="font-montserrat font-bold text-[#1C3B3A] text-[2.5rem] leading-[1.15] mb-8">What participants and families say</h2>
+          <p className="text-[22px] leading-[1.8] text-[#1C3B3A] mb-6">Build & Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program — with their full permission, in their own words.</p>
+          <p className="text-[22px] leading-[1.8] text-[#1C3B3A] mb-8">In the meantime, the best way to get a real sense of the program is to join one of our weekly Instagram Live info sessions. Come with questions. Bring your young adult if you'd like. No commitment required.</p>
+          <a href="#get-started" className="text-[#1C3B3A] font-semibold underline underline-offset-4 text-[18px]">Fill out the inquiry form to receive your invite link →</a>
+        </section>
 
-          {/* 2×2 card grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Section — Philosophy */}
+        <section className="py-20 px-[5%] bg-[#F9F4EC]">
+          <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold mb-10">
+            FROM THE BUILD & LAUNCH PHILOSOPHY
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Card 1 — cream */}
-            <div className="testimonial-card testimonial-card-cream" style={{ background: '#F9F4EC', border: '1.5px solid #1C3B3A', borderRadius: '16px', boxShadow: '0 6px 28px rgba(28,59,58,0.12)', padding: '28px', display: 'flex', flexDirection: 'column' }}>
-              <span style={{ display: 'inline-block', background: '#E8924B', color: '#F9F4EC', fontSize: '10px', fontFamily: 'var(--font-montserrat)', fontWeight: 700, letterSpacing: '1px', padding: '4px 12px', borderRadius: '999px', marginBottom: '16px', width: 'fit-content' }}>
-                Strengths first
-              </span>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', marginBottom: '16px', flex: 1 }}>
-                Career planning that starts with what someone can&apos;t do isn&apos;t career planning. It&apos;s a ceiling. Build &amp; Launch starts with what they love &mdash; and builds from there.
-              </p>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', marginBottom: '8px', fontStyle: 'italic' }}>
-                And somehow that turns into:
-              </p>
-              <ul style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                {['Confidence', 'A real vision for the future', "Something that's actually theirs"].map((item) => (
-                  <li key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A' }}>
-                    <span style={{ color: '#E8924B', fontWeight: 700, flexShrink: 0 }}>&#10003;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontSize: '10px', color: '#9BB5A8', letterSpacing: '0.5px' }}>Tamika Jackson Recreation and Consulting Services</p>
+            <div className="bg-white border border-[#E8924B] rounded-2xl p-8 flex flex-col justify-between">
+              <div>
+                <span className="inline-block bg-[#E8924B] text-white text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6">Strengths first</span>
+                <p className="text-[#1C3B3A] text-[18px] leading-[1.8] mb-4">Career planning that starts with what someone can't do isn't career planning. It's a ceiling. Build & Launch starts with what they love — and builds from there.</p>
+                <p className="text-[#1C3B3A] text-[18px] leading-[1.8] italic mb-4">And somehow that turns into:</p>
+                <ul className="space-y-2">
+                  <li className="text-[#1C3B3A] text-[18px] leading-[1.8]"><span className="text-[#E8924B] mr-2">✓</span>Confidence</li>
+                  <li className="text-[#1C3B3A] text-[18px] leading-[1.8]"><span className="text-[#E8924B] mr-2">✓</span>A real vision for the future</li>
+                  <li className="text-[#1C3B3A] text-[18px] leading-[1.8]"><span className="text-[#E8924B] mr-2">✓</span>Something that's actually theirs</li>
+                </ul>
               </div>
+              <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
 
-            {/* Card 2 — dark */}
-            <div className="testimonial-card testimonial-card-dark" style={{ background: '#1C3B3A', border: '1.5px solid #E8924B', borderRadius: '16px', boxShadow: '0 6px 28px rgba(232,146,75,0.2)', padding: '28px', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '17px', color: '#F9F4EC', lineHeight: 1.4, marginBottom: '16px' }}>
-                YOUR YOUNG PERSON DOESN&apos;T NEED ONE MORE WORKSHEET.
-              </h3>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
-                They need someone who sees their strengths before they see their diagnosis. That&apos;s what Build &amp; Launch is for. A 4-month, 1:1 recreation-based program designed around who they already are.
-              </p>
-              <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontSize: '10px', color: '#9BB5A8', letterSpacing: '0.5px' }}>Tamika Jackson Recreation and Consulting Services</p>
+            {/* Card 2 — deep teal */}
+            <div className="bg-[#1C3B3A] rounded-2xl p-8 flex flex-col justify-between">
+              <div>
+                <p className="text-white font-bold text-[15px] tracking-widest uppercase mb-6">YOUR YOUNG PERSON DOESN'T NEED ONE MORE WORKSHEET.</p>
+                <p className="text-white text-[18px] leading-[1.8]">They need someone who sees their strengths before they see their diagnosis. That's what Build & Launch is for. A 4-month, 1:1 recreation-based program designed around who they already are.</p>
               </div>
+              <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
 
-            {/* Card 3 — dark */}
-            <div className="testimonial-card testimonial-card-dark" style={{ background: '#1C3B3A', border: '1.5px solid #E8924B', borderRadius: '16px', boxShadow: '0 6px 28px rgba(232,146,75,0.2)', padding: '28px', display: 'flex', flexDirection: 'column' }}>
-              <span style={{ display: 'inline-block', background: '#E8924B', color: '#F9F4EC', fontSize: '10px', fontFamily: 'var(--font-montserrat)', fontWeight: 700, letterSpacing: '1px', padding: '4px 12px', borderRadius: '999px', marginBottom: '16px', width: 'fit-content' }}>
-                15+ years in recreation
-              </span>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC', flex: 1, marginBottom: '20px' }}>
-                15+ years in recreation taught me one thing families never expect to hear: Joy is a valid starting point. When we build from what a person genuinely loves, something shifts. They lean in. They try things. They start to imagine a future that&apos;s actually theirs.
-              </p>
-              <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontSize: '10px', color: '#9BB5A8', letterSpacing: '0.5px' }}>Tamika Jackson Recreation and Consulting Services</p>
+            {/* Card 3 — deep teal */}
+            <div className="bg-[#1C3B3A] rounded-2xl p-8 flex flex-col justify-between">
+              <div>
+                <span className="inline-block bg-[#E8924B] text-white text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6">15+ years in recreation</span>
+                <p className="text-white text-[18px] leading-[1.8]">15+ years in recreation taught me one thing families never expect to hear: Joy is a valid starting point. When we build from what a person genuinely loves, something shifts. They lean in. They try things. They start to imagine a future that's actually theirs.</p>
               </div>
+              <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
 
             {/* Card 4 — cream */}
-            <div className="testimonial-card testimonial-card-cream" style={{ background: '#F9F4EC', border: '1.5px solid #1C3B3A', borderRadius: '16px', boxShadow: '0 6px 28px rgba(28,59,58,0.12)', padding: '28px', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 800, fontSize: '17px', color: '#1C3B3A', lineHeight: 1.4, marginBottom: '16px' }}>
-                IF YOU&apos;VE BEEN TOLD YOUR CHILD ISN&apos;T READY &mdash;
-              </h3>
-              <p style={{ fontFamily: 'var(--font-lato)', fontSize: '22px', lineHeight: 1.8, color: '#1C3B3A', flex: 1, marginBottom: '20px' }}>
-                I&apos;d ask: ready by whose definition? Build &amp; Launch meets participants exactly where they are &mdash; building confidence, exploring strengths, and taking real steps toward independence. We start with possibility, not limitations.
-              </p>
-              <div style={{ borderTop: '1px solid #9BB5A8', paddingTop: '12px', marginTop: 'auto' }}>
-                <p style={{ fontFamily: 'var(--font-lato)', fontSize: '10px', color: '#9BB5A8', letterSpacing: '0.5px' }}>Tamika Jackson Recreation and Consulting Services</p>
+            <div className="bg-white border border-[#E8924B] rounded-2xl p-8 flex flex-col justify-between">
+              <div>
+                <p className="text-[#1C3B3A] font-bold text-[15px] tracking-widest uppercase mb-6">IF YOU'VE BEEN TOLD YOUR CHILD ISN'T READY —</p>
+                <p className="text-[#1C3B3A] text-[18px] leading-[1.8]">I'd ask: ready by whose definition? Build & Launch meets participants exactly where they are — building confidence, exploring strengths, and taking real steps toward independence. We start with possibility, not limitations.</p>
               </div>
+              <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
 
           </div>

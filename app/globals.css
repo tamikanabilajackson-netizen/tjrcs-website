@@ -153,8 +153,16 @@ h6 {
   z-index: -1;
   pointer-events: none;
 }
+.testimonial-card-cream {
+  background-color: #F9F4EC;
+  color: #1C3B3A;
+}
 .testimonial-card-cream::before {
   background: rgba(28, 59, 58, 0.2);
+}
+.testimonial-card-dark {
+  background-color: #1C3B3A;
+  color: #F9F4EC;
 }
 .testimonial-card-dark::before {
   background: rgba(232, 146, 75, 0.26);
