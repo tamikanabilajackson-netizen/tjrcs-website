@@ -191,7 +191,7 @@ export default function Home() {
 
               {/* Link */}
               <a
-                href="#about"
+                href="/about"
                 style={{ color: '#F9F4EC', fontWeight: 600, textDecoration: 'underline', textDecorationColor: '#E8924B', textUnderlineOffset: '4px' }}
               >
                 Read Tamika&apos;s full story &rarr;

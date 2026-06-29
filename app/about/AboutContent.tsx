@@ -485,7 +485,7 @@ export default function AboutContent() {
               aria-hidden="true"
             />
             <span style={{ color: '#E8924B', fontSize: '16px', fontFamily: 'var(--font-lato)', fontWeight: 600, letterSpacing: '4px', textTransform: 'uppercase' }}>
-              How she works
+              How Build &amp; Launch Works
             </span>
           </div>
 
