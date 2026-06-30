@@ -130,7 +130,6 @@ export default function ServicesContent() {
         </div>
       </section>
 
-      {/* PLACEHOLDER COPY — confirm format, group size, and party details with Tamika before this is final */}
       {/* ── 3. STEM Birthday Parties ── bg-cream ──────────────────────────── */}
       <section
         aria-labelledby="stem-heading"
@@ -156,7 +155,6 @@ export default function ServicesContent() {
         </Link>
       </section>
 
-      {/* PLACEHOLDER COPY — confirm target audience (organizations vs private clients vs schools) with Tamika before this is final */}
       {/* ── 4. Recreation Professional Services ── bg-white ───────────────── */}
       <section
         aria-labelledby="rec-pro-heading"
@@ -182,7 +180,6 @@ export default function ServicesContent() {
         </Link>
       </section>
 
-      {/* PLACEHOLDER COPY — confirm actual scope (training, ongoing consulting, tool selection) with Tamika before this is final */}
       {/* ── 5. AI Consulting for Care Facilities ── bg-cream ──────────────── */}
       <section
         aria-labelledby="ai-consulting-heading"
