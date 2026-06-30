@@ -141,13 +141,13 @@ export default function HeroSection() {
           >
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#contact"
+                href="#get-started"
                 className="inline-block bg-amber text-white font-semibold text-[17px] px-8 py-4 rounded-md text-center shadow-md hover:bg-amber/90 transition-colors"
               >
                 Find out if this is for you
               </a>
               <a
-                href="#contact"
+                href="#get-started"
                 className="inline-block border-2 border-teal text-teal font-semibold text-[17px] px-8 py-4 rounded-md text-center hover:bg-teal hover:text-cream transition-colors"
               >
                 Join an info session

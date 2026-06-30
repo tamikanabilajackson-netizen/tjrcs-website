@@ -277,7 +277,7 @@ export default function Home() {
                 <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
                   Opt-out right: exit after Month 1 &mdash; no further obligation.
                 </div>
-                <a href="#contact" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
+                <a href="#get-started" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
                   Start with Discovery Month
                 </a>
               </div>
@@ -313,7 +313,7 @@ export default function Home() {
                 <div className="bg-black/20 rounded p-3 text-sage text-[22px] italic mb-6">
                   Opt-out right included &mdash; exit after Month 1 with no further obligation.
                 </div>
-                <a href="#contact" className="block bg-amber text-white font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber/90 transition-colors">
+                <a href="#get-started" className="block bg-amber text-white font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber/90 transition-colors">
                   Start the conversation
                 </a>
               </div>
@@ -346,7 +346,7 @@ export default function Home() {
                 <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
                   Opt-out right included &mdash; $200 entry is the only charge until Month 2.
                 </div>
-                <a href="#contact" className="block border-2 border-amber text-amber font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber hover:text-white transition-colors">
+                <a href="#get-started" className="block border-2 border-amber text-amber font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber hover:text-white transition-colors">
                   Start the conversation
                 </a>
               </div>
@@ -428,7 +428,7 @@ export default function Home() {
         </section>
 
         {/* 10. Get Started */}
-        <section id="contact" className="relative bg-teal py-20 px-[5%]">
+        <section id="get-started" className="relative bg-teal py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
           <div>
             <h2 className="font-heading font-bold text-cream text-[36px] mb-6">
