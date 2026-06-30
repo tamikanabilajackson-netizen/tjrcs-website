@@ -8,9 +8,9 @@ export default function Home() {
         <HeroSection />
 
         {/* 2. The Gap */}
-        <section className="relative overflow-hidden w-full bg-[#1C3B3A] py-20">
+        <section className="relative overflow-hidden w-full bg-[#1C3B3A] py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="relative z-10 px-[5%] space-y-6">
+          <div className="relative z-10 space-y-6">
             <div className="relative" style={{ overflow: 'visible' }}>
               {/* ✦ Sparkle stars — 5 amber, 3 sage */}
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-16px', left: '2%',  fontSize: '22px', color: '#E8924B', '--star-dur': '2.4s', '--star-delay': '0s'   } as React.CSSProperties}>✦</span>
@@ -33,9 +33,9 @@ export default function Home() {
         </section>
 
         {/* 3. What Build & Launch Is */}
-        <section className="relative bg-white py-20">
+        <section className="relative bg-white py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
+          <div>
             <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What Build &amp; Launch is</h2>
             <p className="text-teal/75 text-[22px] leading-[1.8] mb-14">
               Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
@@ -84,9 +84,9 @@ export default function Home() {
         </section>
 
         {/* 4. The Four Phases */}
-        <section className="relative bg-teal py-20">
+        <section className="relative bg-teal py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
+          <div>
             <h2 className="font-heading font-bold text-cream text-[36px] mb-14">The four phases</h2>
             <div className="grid gap-6 sm:grid-cols-2">
               {[
@@ -127,9 +127,9 @@ export default function Home() {
         </section>
 
         {/* 5. The Journal */}
-        <section className="relative bg-cream py-20">
+        <section className="relative bg-cream py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
+          <div>
             <div className="relative" style={{ overflow: 'visible' }}>
               {/* ✦ Sparkle stars — 5 amber, 3 sage */}
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', top: '-16px', left: '1%',  fontSize: '20px', color: '#E8924B', '--star-dur': '2.6s', '--star-delay': '0s'   } as React.CSSProperties}>✦</span>
@@ -157,7 +157,7 @@ export default function Home() {
         <WhoItIsFor />
 
         {/* 7. About Tamika */}
-        <section id="about" className="relative" style={{ background: '#9BB5A8', padding: '80px 64px' }}>
+        <section id="about" className="relative py-20 px-[5%]" style={{ background: '#9BB5A8' }}>
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -228,9 +228,9 @@ export default function Home() {
         </section>
 
         {/* 8. The Investment */}
-        <section className="relative bg-cream py-20">
+        <section className="relative bg-cream py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
+          <div>
 
             {/* Header */}
             <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold mb-3">The Investment</p>
@@ -362,7 +362,8 @@ export default function Home() {
         </section>
 
         {/* Section 9 — Testimonials */}
-        <section className="py-20 px-[5%] bg-[#F9F4EC]">
+        <section className="relative py-20 px-[5%] bg-white">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px] bg-gradient-to-b from-[#E8924B] to-[#1C3B3A]" aria-hidden="true" />
           <div className="mb-4 flex items-center gap-3">
             <div className="w-7 h-[1px] bg-[#E8924B]"></div>
             <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold">Testimonials</p>
@@ -374,7 +375,8 @@ export default function Home() {
         </section>
 
         {/* Section — Philosophy */}
-        <section className="py-20 px-[5%] bg-[#F9F4EC]">
+        <section className="relative py-20 px-[5%] bg-[#F9F4EC]">
+          <div className="absolute left-0 top-0 bottom-0 w-[5px] bg-gradient-to-b from-[#E8924B] to-[#1C3B3A]" aria-hidden="true" />
           <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold mb-10">
             FROM THE BUILD & LAUNCH PHILOSOPHY
           </p>
@@ -426,9 +428,9 @@ export default function Home() {
         </section>
 
         {/* 10. Get Started */}
-        <section id="contact" className="relative bg-teal py-20">
+        <section id="contact" className="relative bg-teal py-20 px-[5%]">
           <div className="absolute left-0 top-0 bottom-0 w-[5px]" style={{ background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)' }} aria-hidden="true" />
-          <div className="px-[5%]">
+          <div>
             <h2 className="font-heading font-bold text-cream text-[36px] mb-6">
               Let&apos;s find out if Build &amp; Launch is the right fit
             </h2>
