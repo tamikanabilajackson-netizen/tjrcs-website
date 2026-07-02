@@ -21,7 +21,7 @@ export default function Home() {
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-14px', left: '10%', fontSize: '18px', color: '#E8924B', '--star-dur': '3.2s', '--star-delay': '0.4s' } as React.CSSProperties}>✦</span>
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-10px', left: '44%', fontSize: '10px', color: '#E8924B', '--star-dur': '1.8s', '--star-delay': '2.8s' } as React.CSSProperties}>✦</span>
               <span className="star-sparkle" aria-hidden="true" style={{ position: 'absolute', bottom: '-16px', left: '72%', fontSize: '24px', color: '#E8924B', '--star-dur': '3.6s', '--star-delay': '1.2s' } as React.CSSProperties}>✦</span>
-              <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
+              <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start. And why we don&apos;t.</h2>
             </div>
             <p className="text-white/80 text-[22px] leading-[1.8]">
               Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention: the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow. Those rarely get the same room.
@@ -45,7 +45,7 @@ export default function Home() {
               {[
                 {
                   title: "16 weekly 1:1 sessions",
-                  body: "In-person, approximately 60 minutes each. This is your space — consistent, predictable, and entirely focused on you.",
+                  body: "In-person, approximately 60 minutes each. This is your space: consistent, predictable, and entirely focused on you.",
                 },
                 {
                   title: "2 virtual group sessions",
@@ -53,7 +53,7 @@ export default function Home() {
                 },
                 {
                   title: "2 Community Venture Days",
-                  body: "Real-world experience in your community — 4 to 6 hours each. Month 3 you explore with support. Month 4 you lead.",
+                  body: "Real-world experience in your community, 4 to 6 hours each. Month 3 you explore with support. Month 4 you lead.",
                 },
               ].map((card) => (
                 <div key={card.title} className="bg-cream rounded-lg p-7">
@@ -144,7 +144,7 @@ export default function Home() {
             </div>
             <div className="space-y-6 text-teal/75 text-[22px] leading-[1.8]">
               <p>
-                From your very first session, you&apos;ll have a journal that&apos;s entirely yours. Every week it grows. An interest map. A strengths profile. Your business concept, your brand, your customer, your story &mdash; in your own words, built at your own pace across four months.
+                From your very first session, you&apos;ll have a journal that&apos;s entirely yours. Every week it grows. An interest map. A strengths profile. Your business concept, your brand, your customer, your story: in your own words, built at your own pace across four months.
               </p>
               <p>
                 By the time you reach your end-of-program celebration, it isn&apos;t just a journal anymore. It&apos;s a complete record of who you are, what you built, and where you&apos;re headed. A portfolio you created yourself, from the very first page.
@@ -182,7 +182,7 @@ export default function Home() {
                   Tamika Jackson is a Recreation Professional with over 15 years of experience building programs that help people discover what they&apos;re capable of.
                 </p>
                 <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC' }}>
-                  She didn&apos;t plan for this work. She went to school to be a chemist. But a part-time job at a retirement home quietly changed everything &mdash; and what she found there felt like something that was made for her.
+                  She didn&apos;t plan for this work. She went to school to be a chemist. But a part-time job at a retirement home quietly changed everything. What she found there felt like something that was made for her.
                 </p>
                 <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '22px', lineHeight: 1.8, color: '#F9F4EC' }}>
                   She is also neurodivergent herself. Build &amp; Launch exists because of that experience. Not despite it.
@@ -235,18 +235,18 @@ export default function Home() {
             {/* Header */}
             <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold mb-3">The Investment</p>
             <h2 className="font-heading font-bold text-teal text-[36px] mb-5">
-              Build &amp; Launch Program &mdash; Founding Family Pricing
+              Build &amp; Launch Program: Founding Family Pricing
             </h2>
 
             {/* Beta banner */}
             <div className="flex items-center gap-3 bg-teal rounded-full px-5 py-2 mb-5 w-fit">
               <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full">Beta Phase</span>
-              <span className="text-cream text-[22px]">These rates are available to our founding families only &mdash; not available after launch</span>
+              <span className="text-cream text-[22px]">These rates are available to our founding families only, not available after launch</span>
             </div>
 
             {/* Subtext */}
             <p className="text-teal/75 text-[22px] leading-[1.8] mb-10">
-              Three paths into the program. Every path starts with Discovery Month &mdash; a low-commitment entry point with the right to opt out after Month 1 at no further obligation.
+              Three paths into the program. Every path starts with Discovery Month: a low-commitment entry point with the right to opt out after Month 1 at no further obligation.
             </p>
 
             {/* Cards */}
@@ -257,7 +257,7 @@ export default function Home() {
                 <span className="bg-sage text-teal text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Try first</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
                 <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
-                <p className="text-teal/60 text-[22px] mb-5">Entry point &mdash; Month 1 only</p>
+                <p className="text-teal/60 text-[22px] mb-5">Entry point: Month 1 only</p>
                 <div className="bg-sage/20 border-l-4 border-sage rounded p-4 text-teal/75 text-[22px] leading-[1.8] mb-5">
                   Prefer to split it? Pay as 2 &times; $100. Exit after Month 1 with no further obligation.
                 </div>
@@ -265,8 +265,8 @@ export default function Home() {
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
                     "4 weekly 1:1 sessions with Tamika",
-                    "Your Build & Launch Journal — starts Session 1",
-                    "Full Discover phase — strengths, interests, identity",
+                    "Your Build & Launch Journal, starting Session 1",
+                    "Full Discover phase: strengths, interests, identity",
                   ].map((item) => (
                     <li key={item} className="flex gap-3 text-teal/80 text-[22px] leading-[1.8]">
                       <span className="text-amber font-bold shrink-0">&#10003;</span>
@@ -275,7 +275,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
-                  Opt-out right: exit after Month 1 &mdash; no further obligation.
+                  Opt-out right: exit after Month 1. No further obligation.
                 </div>
                 <a href="#get-started" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
                   Start with Discovery Month
@@ -285,7 +285,7 @@ export default function Home() {
               {/* Card 2 — Full Program Installments (featured) */}
               <div className="pricing-card-featured flex-1 flex flex-col bg-teal rounded-xl p-8">
                 <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Founding family rate</span>
-                <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program &mdash; Installments</h3>
+                <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program: Installments</h3>
                 <div className="flex items-baseline gap-2 mb-1">
                   <p className="font-heading font-bold text-cream text-4xl">$1,500</p>
                   <span className="text-cream/60 text-[22px]">total</span>
@@ -298,9 +298,9 @@ export default function Home() {
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
                     "16 weekly 1:1 sessions with Tamika",
-                    "2 virtual group sessions — small closed cohort",
+                    "2 virtual group sessions (small closed cohort)",
                     "2 Community Venture Days",
-                    "Build & Launch Journal — yours to keep",
+                    "Build & Launch Journal, yours to keep",
                     "End-of-program celebration",
                     "Participation Support Profile reviewed before every session",
                   ].map((item) => (
@@ -311,7 +311,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <div className="bg-black/20 rounded p-3 text-sage text-[22px] italic mb-6">
-                  Opt-out right included &mdash; exit after Month 1 with no further obligation.
+                  Opt-out right included: exit after Month 1 with no further obligation.
                 </div>
                 <a href="#get-started" className="block bg-amber text-white font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber/90 transition-colors">
                   Start the conversation
@@ -321,7 +321,7 @@ export default function Home() {
               {/* Card 3 — Full Program Paid in Full */}
               <div className="pricing-card flex-1 flex flex-col bg-white border-2 border-amber rounded-xl p-8">
                 <span className="border border-amber text-amber text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Best value</span>
-                <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program &mdash; Paid in Full</h3>
+                <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program: Paid in Full</h3>
                 <div className="flex items-baseline gap-2 mb-1">
                   <p className="font-heading font-bold text-teal text-4xl">$1,200</p>
                   <span className="text-amber text-[22px]">total</span>
@@ -335,7 +335,7 @@ export default function Home() {
                   {[
                     "Everything in the Installments plan",
                     "Full program locked in after Month 1",
-                    "Lowest founding family rate — not available after launch",
+                    "Lowest founding family rate, not available after launch",
                   ].map((item) => (
                     <li key={item} className="flex gap-3 text-teal/80 text-[22px] leading-[1.8]">
                       <span className="text-amber font-bold shrink-0">&#10003;</span>
@@ -344,7 +344,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
-                  Opt-out right included &mdash; $200 entry is the only charge until Month 2.
+                  Opt-out right included: $200 entry is the only charge until Month 2.
                 </div>
                 <a href="#get-started" className="block border-2 border-amber text-amber font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-amber hover:text-white transition-colors">
                   Start the conversation
@@ -355,7 +355,7 @@ export default function Home() {
 
             {/* Footer note */}
             <div className="bg-white border-l-4 border-sage p-5 text-teal/55 text-sm italic leading-relaxed">
-              No hidden fees. No materials costs. No surprises. These are founding family rates &mdash; available to the first cohort only. This program is not covered by OHIP or insurance. It is a recreation-based mentorship program, not a clinical service.
+              No hidden fees. No materials costs. No surprises. These are founding family rates, available to the first cohort only. This program is not covered by OHIP or insurance. It is a recreation-based mentorship program, not a clinical service.
             </div>
 
           </div>
@@ -369,7 +369,7 @@ export default function Home() {
             <p className="text-amber uppercase tracking-[3px] text-[14px] font-semibold">Testimonials</p>
           </div>
           <h2 className="font-montserrat font-bold text-[#1C3B3A] text-[2.5rem] leading-[1.15] mb-8">What participants and families say</h2>
-          <p className="text-[22px] leading-[1.8] text-[#1C3B3A] mb-6">Build & Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program — with their full permission, in their own words.</p>
+          <p className="text-[22px] leading-[1.8] text-[#1C3B3A] mb-6">Build & Launch is currently welcoming its founding cohort. Testimonials will be shared here as participants move through the program, with their full permission, in their own words.</p>
           <p className="text-[22px] leading-[1.8] text-[#1C3B3A] mb-8">In the meantime, the best way to get a real sense of the program is to join one of our weekly Instagram Live info sessions. Come with questions. Bring your young adult if you'd like. No commitment required.</p>
           <a href="#get-started" className="text-[#1C3B3A] font-semibold underline underline-offset-4 text-[18px]">Fill out the inquiry form to receive your invite link →</a>
         </section>
@@ -386,7 +386,7 @@ export default function Home() {
             <div className="bg-white border border-[#E8924B] rounded-2xl p-8 flex flex-col justify-between">
               <div>
                 <span className="inline-block bg-[#E8924B] text-white text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6">Strengths first</span>
-                <p className="text-[#1C3B3A] text-[18px] leading-[1.8] mb-4">Career planning that starts with what someone can't do isn't career planning. It's a ceiling. Build & Launch starts with what they love — and builds from there.</p>
+                <p className="text-[#1C3B3A] text-[18px] leading-[1.8] mb-4">Career planning that starts with what someone can't do isn't career planning. It's a ceiling. Build & Launch starts with what they love, and builds from there.</p>
                 <p className="text-[#1C3B3A] text-[18px] leading-[1.8] italic mb-4">And somehow that turns into:</p>
                 <ul className="space-y-2">
                   <li className="text-[#1C3B3A] text-[18px] leading-[1.8]"><span className="text-[#E8924B] mr-2">✓</span>Confidence</li>
@@ -418,8 +418,8 @@ export default function Home() {
             {/* Card 4 — cream */}
             <div className="bg-white border border-[#E8924B] rounded-2xl p-8 flex flex-col justify-between">
               <div>
-                <p className="text-[#1C3B3A] font-bold text-[15px] tracking-widest uppercase mb-6">IF YOU'VE BEEN TOLD YOUR CHILD ISN'T READY —</p>
-                <p className="text-[#1C3B3A] text-[18px] leading-[1.8]">I'd ask: ready by whose definition? Build & Launch meets participants exactly where they are — building confidence, exploring strengths, and taking real steps toward independence. We start with possibility, not limitations.</p>
+                <p className="text-[#1C3B3A] font-bold text-[15px] tracking-widest uppercase mb-6">IF YOU'VE BEEN TOLD YOUR CHILD ISN'T READY:</p>
+                <p className="text-[#1C3B3A] text-[18px] leading-[1.8]">I'd ask: ready by whose definition? Build & Launch meets participants exactly where they are: building confidence, exploring strengths, and taking real steps toward independence. We start with possibility, not limitations.</p>
               </div>
               <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
@@ -435,7 +435,7 @@ export default function Home() {
               Let&apos;s find out if Build &amp; Launch is the right fit
             </h2>
             <p className="text-cream/75 text-[22px] leading-[1.8] mb-12">
-              You don&apos;t need to have everything figured out before you reach out. That&apos;s what the conversation is for. Fill out the short form below and Tamika will personally follow up with an invite to the next weekly Instagram Live info session &mdash; a free, no-commitment space where you can hear more about the program, ask questions, and get a real sense of whether this is the right fit for you and your family. There&apos;s no sales pitch. No pressure. Just an honest conversation.
+              You don&apos;t need to have everything figured out before you reach out. That&apos;s what the conversation is for. Fill out the short form below and Tamika will personally follow up with an invite to the next weekly Instagram Live info session: a free, no-commitment space where you can hear more about the program, ask questions, and get a real sense of whether this is the right fit for you and your family. There&apos;s no sales pitch. No pressure. Just an honest conversation.
             </p>
 
             <form className="space-y-6 mb-16">
@@ -503,7 +503,7 @@ export default function Home() {
                 Not ready to fill out a form yet?
               </h3>
               <p className="text-cream/75 text-[22px] leading-[1.8] mb-8">
-                Enter your email below to receive weekly Instagram Live invite links &mdash; no commitment, no inbox flooding. Just a standing invitation to come when you&apos;re ready.
+                Enter your email below to receive weekly Instagram Live invite links. No commitment, no inbox flooding. Just a standing invitation to come when you&apos;re ready.
               </p>
               <form className="flex flex-col sm:flex-row gap-4">
                 <input

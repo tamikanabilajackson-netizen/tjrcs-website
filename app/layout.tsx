@@ -15,7 +15,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Build & Launch — Tamika Jackson Recreation and Consulting Services",
+  title: "Build & Launch | Tamika Jackson Recreation and Consulting Services",
   description: "A 4-month recreation-based career exploration program for autistic and neurodivergent young adults.",
 };
 

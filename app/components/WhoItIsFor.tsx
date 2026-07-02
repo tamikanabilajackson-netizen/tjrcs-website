@@ -10,9 +10,9 @@ const LEFT_BULLETS = [
 ] as const;
 
 const RIGHT_BULLETS = [
-  "You want something that takes your young adult seriously — not a program that manages them, but one that genuinely invests in who they are and where they're going",
+  "You want something that takes your young adult seriously: not a program that manages them, but one that genuinely invests in who they are and where they're going",
   "Build & Launch is structured, professionally delivered, and grounded in therapeutic recreation principles",
-  "Every session follows a consistent format — nothing significant happens without advance notice",
+  "Every session follows a consistent format: nothing significant happens without advance notice",
   "Your young adult is supported at every stage",
 ] as const;
 
