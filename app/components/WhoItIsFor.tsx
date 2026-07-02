@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const LEFT_BULLETS = [
-  "You're autistic, neurodivergent, or identify that way — with or without a formal diagnosis",
+  "You're autistic, neurodivergent, or identify that way, with or without a formal diagnosis",
   "You've spent more time working around your challenges than building on your strengths",
   "You want a space that's consistent, predictable, and genuinely built around who you are",
   "You're ready to explore what a career could look like on your own terms",

@@ -24,7 +24,7 @@ export default function Home() {
               <h2 className="font-heading font-bold text-white text-[36px]">Where most programs start &mdash; and why we don&apos;t</h2>
             </div>
             <p className="text-white/80 text-[22px] leading-[1.8]">
-              Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention &mdash; the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow &mdash; those rarely get the same room.
+              Most neurodivergent young adults spend years developing techniques to manage what&apos;s hard. The challenges get all the attention: the strategies, the workarounds, the goals built around overcoming. The strengths? The things that come more naturally, the interests that light something up, the parts of a person that are already ready to grow. Those rarely get the same room.
             </p>
             <p className="text-white/80 text-[22px] leading-[1.8]">
               Build &amp; Launch starts from a different place entirely. Because knowing who you are and what you&apos;re already good at isn&apos;t just feel-good advice. It&apos;s the foundation of a career that actually fits.
@@ -38,7 +38,7 @@ export default function Home() {
           <div>
             <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What Build &amp; Launch is</h2>
             <p className="text-teal/75 text-[22px] leading-[1.8] mb-14">
-              Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles &mdash; designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
+              Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles, designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
             {/* Top row — 3 cards */}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

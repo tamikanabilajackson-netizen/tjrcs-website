@@ -130,7 +130,7 @@ export default function HeroSection() {
           {/* Subheadline — static, always visible */}
           <div className="mb-10">
             <p className="font-sans font-normal" style={{ fontSize: '22px', lineHeight: 1.8, color: '#3a4a3a', maxWidth: '680px' }}>
-              A 4-month recreation-based entrepreneurship and career exploration program for autistic and neurodivergent young adults &mdash; 1:1, strengths-based, and designed around you from day one.
+              A 4-month recreation-based entrepreneurship and career exploration program for autistic and neurodivergent young adults: 1:1, strengths-based, and designed around you from day one.
             </p>
           </div>
 
