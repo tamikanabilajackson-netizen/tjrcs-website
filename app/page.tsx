@@ -1,5 +1,7 @@
 import HeroSection from './components/HeroSection';
 import WhoItIsFor from './components/WhoItIsFor';
+import BuildLaunchInquiryForm from './components/BuildLaunchInquiryForm';
+import NewsletterCaptureForm from './components/NewsletterCaptureForm';
 
 export default function Home() {
   return (
@@ -438,65 +440,7 @@ export default function Home() {
               You don&apos;t need to have everything figured out before you reach out. That&apos;s what the conversation is for. Fill out the short form below and Tamika will personally follow up with an invite to the next weekly Instagram Live info session: a free, no-commitment space where you can hear more about the program, ask questions, and get a real sense of whether this is the right fit for you and your family. There&apos;s no sales pitch. No pressure. Just an honest conversation.
             </p>
 
-            <form className="space-y-6 mb-16">
-              <div>
-                <label htmlFor="inquiry-name" className="block text-cream text-lg font-medium mb-2">Name</label>
-                <input
-                  id="inquiry-name"
-                  type="text"
-                  className="w-full bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="inquiry-email" className="block text-cream text-lg font-medium mb-2">Email</label>
-                <input
-                  id="inquiry-email"
-                  type="email"
-                  className="w-full bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="inquiry-role" className="block text-cream text-lg font-medium mb-2">Who is inquiring</label>
-                <select id="inquiry-role" className="w-full bg-white/10 border border-cream/25 text-cream rounded-md px-4 py-3 focus:border-cream/55 transition-colors appearance-none cursor-pointer">
-                  <option value="" className="text-teal bg-white">Select one</option>
-                  <option value="young-adult" className="text-teal bg-white">I&apos;m a young adult interested in the program</option>
-                  <option value="parent" className="text-teal bg-white">I&apos;m a parent or caregiver</option>
-                  <option value="together" className="text-teal bg-white">We&apos;re reaching out together</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="inquiry-about" className="block text-cream text-lg font-medium mb-2">
-                  Tell us about where you or your young adult is right now{" "}
-                  <span className="text-cream/45 font-normal">(optional)</span>
-                </label>
-                <textarea
-                  id="inquiry-about"
-                  rows={4}
-                  className="w-full bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors resize-none"
-                  placeholder="Share as much or as little as you'd like."
-                />
-              </div>
-              <div>
-                <label htmlFor="inquiry-referral" className="block text-cream text-lg font-medium mb-2">
-                  How did you hear about Build &amp; Launch{" "}
-                  <span className="text-cream/45 font-normal">(optional)</span>
-                </label>
-                <input
-                  id="inquiry-referral"
-                  type="text"
-                  className="w-full bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors"
-                  placeholder="Instagram, word of mouth, etc."
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-amber text-white font-semibold text-[17px] px-8 py-4 rounded-md hover:bg-amber/90 transition-colors"
-              >
-                Send my inquiry
-              </button>
-            </form>
+            <BuildLaunchInquiryForm />
 
             <div className="border-t border-cream/20 pt-12">
               <h3 className="font-heading font-semibold text-cream text-[26px] mb-3">
@@ -505,26 +449,7 @@ export default function Home() {
               <p className="text-cream/75 text-[22px] leading-[1.8] mb-8">
                 Enter your email below to receive weekly Instagram Live invite links. No commitment, no inbox flooding. Just a standing invitation to come when you&apos;re ready.
               </p>
-              <form className="flex flex-col sm:flex-row gap-4">
-                <input
-                  type="text"
-                  aria-label="First name"
-                  className="flex-1 bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors"
-                  placeholder="First name"
-                />
-                <input
-                  type="email"
-                  aria-label="Email address"
-                  className="flex-1 bg-white/10 border border-cream/25 text-cream placeholder:text-cream/35 rounded-md px-4 py-3 focus:border-cream/55 transition-colors"
-                  placeholder="Email address"
-                />
-                <button
-                  type="submit"
-                  className="bg-amber text-white font-semibold text-[17px] px-6 py-3 rounded-md hover:bg-amber/90 transition-colors whitespace-nowrap"
-                >
-                  Keep me in the loop
-                </button>
-              </form>
+              <NewsletterCaptureForm />
             </div>
           </div>
         </section>

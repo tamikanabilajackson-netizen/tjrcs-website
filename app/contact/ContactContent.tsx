@@ -66,6 +66,8 @@ const ACCENT_BAR: CSSProperties = {
   background: 'linear-gradient(to bottom, #E8924B, #1C3B3A)',
 };
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function ContactContent() {
   const [form, setForm] = useState<InquiryForm>({
     name: '',
@@ -76,9 +78,13 @@ export default function ContactContent() {
     howDidYouHear: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const [capture, setCapture] = useState<CaptureForm>({ firstName: '', email: '' });
   const [captureSubmitted, setCaptureSubmitted] = useState(false);
+  const [captureSubmitting, setCaptureSubmitting] = useState(false);
+  const [captureError, setCaptureError] = useState('');
 
   const otherInputRef = useRef<HTMLInputElement>(null);
 
@@ -88,16 +94,65 @@ export default function ContactContent() {
     }
   }, [form.service]);
 
-  function handleInquirySubmit(e: FormEvent) {
+  async function handleInquirySubmit(e: FormEvent) {
     e.preventDefault();
-    console.log('Inquiry form submitted:', form);
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/inquiry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'Contact Page Inquiry',
+          name: form.name,
+          email: form.email,
+          category: form.service === 'Other' ? form.otherService : form.service,
+          message: form.whereAreYouNow,
+          referral: form.howDidYouHear,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
-  function handleCaptureSubmit(e: FormEvent) {
+  async function handleCaptureSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log('Email capture submitted:', capture);
-    setCaptureSubmitted(true);
+    setCaptureSubmitting(true);
+    setCaptureError('');
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'Contact Page Invite Link',
+          name: capture.firstName,
+          email: capture.email,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      setCaptureSubmitted(true);
+    } catch (err) {
+      setCaptureError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setCaptureSubmitting(false);
+    }
   }
 
   return (
@@ -342,9 +397,16 @@ export default function ContactContent() {
                 />
               </div>
 
+              {submitError && (
+                <p role="alert" style={{ fontFamily: 'var(--font-lato)', fontSize: '15px', color: '#E8924B', marginBottom: '20px' }}>
+                  {submitError}
+                </p>
+              )}
+
               {/* Primary submit button */}
               <button
                 type="submit"
+                disabled={submitting}
                 style={{
                   background: '#E8924B',
                   color: '#fff',
@@ -356,13 +418,14 @@ export default function ContactContent() {
                   border: 'none',
                   textTransform: 'uppercase',
                   letterSpacing: '1.5px',
-                  cursor: 'pointer',
+                  cursor: submitting ? 'default' : 'pointer',
+                  opacity: submitting ? 0.7 : 1,
                   transition: 'background-color 0.2s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#d4793a')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#E8924B')}
+                onMouseEnter={e => { if (!submitting) e.currentTarget.style.backgroundColor = '#d4793a'; }}
+                onMouseLeave={e => { if (!submitting) e.currentTarget.style.backgroundColor = '#E8924B'; }}
               >
-                Send my inquiry
+                {submitting ? 'Sending…' : 'Send my inquiry'}
               </button>
 
             </form>
@@ -473,9 +536,16 @@ export default function ContactContent() {
                   </div>
                 </div>
 
+                {captureError && (
+                  <p role="alert" style={{ fontFamily: 'var(--font-lato)', fontSize: '15px', color: '#E8924B', marginBottom: '20px' }}>
+                    {captureError}
+                  </p>
+                )}
+
                 {/* Secondary / ghost button */}
                 <button
                   type="submit"
+                  disabled={captureSubmitting}
                   style={{
                     background: 'transparent',
                     color: '#1C3B3A',
@@ -487,19 +557,22 @@ export default function ContactContent() {
                     border: '2px solid rgba(28,59,58,0.4)',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    cursor: 'pointer',
+                    cursor: captureSubmitting ? 'default' : 'pointer',
+                    opacity: captureSubmitting ? 0.7 : 1,
                     transition: 'border-color 0.2s ease, color 0.2s ease',
                   }}
                   onMouseEnter={e => {
+                    if (captureSubmitting) return;
                     e.currentTarget.style.borderColor = '#E8924B';
                     e.currentTarget.style.color = '#E8924B';
                   }}
                   onMouseLeave={e => {
+                    if (captureSubmitting) return;
                     e.currentTarget.style.borderColor = 'rgba(28,59,58,0.4)';
                     e.currentTarget.style.color = '#1C3B3A';
                   }}
                 >
-                  Send me the invite link
+                  {captureSubmitting ? 'Sending…' : 'Send me the invite link'}
                 </button>
 
               </form>
