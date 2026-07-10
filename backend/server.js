@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
@@ -25,28 +25,11 @@ const formLimiter = rateLimit({
   message: { error: 'Too many submissions. Please try again later.' },
 });
 
-// ---- Mailer (Zoho SMTP) ----
-// Some Zoho accounts live on a regional data center (e.g. smtp.zohocloud.ca
-// instead of smtp.zoho.com) — check Zoho Mail > Settings > Mail Accounts >
-// SMTP tab for the exact host if authentication fails.
-const transporter = nodemailer.createTransport({
-  host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com',
-  port: 465,
-  secure: true, // true for port 465
-  auth: {
-    user: process.env.ZOHO_EMAIL,
-    pass: process.env.ZOHO_APP_PASSWORD, // Zoho app-specific password, NOT your login password
-  },
-});
-
-// Verify SMTP connection on startup so config problems show up immediately
-transporter.verify((err) => {
-  if (err) {
-    console.error('Zoho SMTP connection failed:', err.message);
-  } else {
-    console.log('Zoho SMTP connection ready');
-  }
-});
+// ---- Mailer (Resend) ----
+// Sending from Resend's shared testing domain until a custom domain is
+// verified on the Resend account — see https://resend.com/domains.
+const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM_EMAIL = 'TJRCS Website <onboarding@resend.dev>';
 
 // ---- Helpers ----
 function isValidEmail(email) {
@@ -108,10 +91,10 @@ app.post('/api/inquiry', formLimiter, async (req, res) => {
   const formLabel = source || 'Website Inquiry';
 
   try {
-    await Promise.all([
-      transporter.sendMail({
-        from: `"TJRCS Website" <${process.env.ZOHO_EMAIL}>`,
-        to: process.env.TO_EMAIL || process.env.ZOHO_EMAIL,
+    const [emailResult] = await Promise.all([
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: process.env.TO_EMAIL,
         replyTo: email,
         subject: `New inquiry (${formLabel}) from ${name}`,
         html: `
@@ -134,6 +117,9 @@ app.post('/api/inquiry', formLimiter, async (req, res) => {
         referral: referral || '',
       }),
     ]);
+    // Resend resolves (rather than rejects) on API-level failures, e.g. an
+    // unverified domain or bad API key — surface those as errors too.
+    if (emailResult.error) throw new Error(emailResult.error.message);
     res.json({ success: true, message: 'Thanks! Your inquiry has been sent.' });
   } catch (err) {
     console.error('Inquiry email failed:', err.message);
@@ -153,10 +139,10 @@ app.post('/api/subscribe', formLimiter, async (req, res) => {
   const formLabel = source || 'Newsletter Signup';
 
   try {
-    await Promise.all([
-      transporter.sendMail({
-        from: `"TJRCS Website" <${process.env.ZOHO_EMAIL}>`,
-        to: process.env.TO_EMAIL || process.env.ZOHO_EMAIL,
+    const [emailResult] = await Promise.all([
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: process.env.TO_EMAIL,
         replyTo: email,
         subject: `New signup (${formLabel})${name ? ` — ${name}` : ''}`,
         html: `
@@ -175,6 +161,7 @@ app.post('/api/subscribe', formLimiter, async (req, res) => {
         referral: '',
       }),
     ]);
+    if (emailResult.error) throw new Error(emailResult.error.message);
     res.json({ success: true, message: "Thanks! You're on the list." });
   } catch (err) {
     console.error('Subscribe email failed:', err.message);
