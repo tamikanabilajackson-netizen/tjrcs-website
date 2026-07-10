@@ -1,12 +1,20 @@
 # TJRCS Backend — Website Inquiry Forms
 
 A small Node.js/Express API that receives submissions from tjrcs.net's forms,
-emails them to `tamika@tjrcs.net` via Zoho, and (optionally) logs each one as
-a row in a Google Sheet — automatically, on every submission.
+emails them to `tamika@tjrcs.net` via the Resend API, and logs each one as a
+row in a Google Sheet, automatically, on every submission.
 
-This lives in its own `backend/` folder, separate from the Next.js site, because
-it's a standalone Express service deployed on its own (e.g. Render/Railway),
+This lives in its own `backend/` folder, separate from the Next.js site,
+because it's a standalone Express service deployed on its own (Render),
 not part of the Next.js/Vercel build.
+
+**Current status: deployed and working.**
+
+- Live backend: `https://tjrcs-backend.onrender.com`
+- Email delivery: Resend, sending from `forms@tjrcs.net` (domain verified)
+  to `TO_EMAIL` (`tamika@tjrcs.net`), with `replyTo` set to the submitter
+- The site's forms are wired to it via `NEXT_PUBLIC_BACKEND_URL` (set in
+  Vercel project settings and in `.env.local` for local dev)
 
 ## What's in here
 
@@ -15,37 +23,39 @@ not part of the Next.js/Vercel build.
   - `POST /api/subscribe` — used by the two small "keep me in the loop" /
     "send me the invite link" capture forms
   - `GET /api/health` — health check
-- `apps-script.gs` — paste into a Google Sheet to log submissions there
+- `apps-script.gs` — pasted into a Google Sheet to log submissions there
 - `package.json` — dependencies
 - `.env.example` — template for your secrets (copy to `.env`)
 
-## The actual forms on tjrcs.net this connects to
+## The forms on tjrcs.net this connects to
 
-**Homepage — "Build & Launch" inquiry form** (`tjrcs.net/`)
-Field ids: `inquiry-name`, `inquiry-email`, `inquiry-role` (select: `young-adult` /
-`parent` / `together`), `inquiry-about`, `inquiry-referral`. Button: "Send my inquiry".
+**Homepage "Build & Launch" inquiry form** (`app/components/BuildLaunchInquiryForm.tsx`)
+POSTs to `/api/inquiry` with `source: "Build & Launch Inquiry (Homepage)"`.
 
-**Contact page — general inquiry form** (`tjrcs.net/contact`)
-Field ids: `inquiry-name`, `inquiry-email`, `inquiry-service` (select: Build & Launch /
-STEM Birthday Parties (Ages 4–10) / Recreation Professional Services / AI Consulting
-for Care Facilities / Other), `inquiry-where-now`, `inquiry-how-heard`. Button: "Send my inquiry".
+**Contact page general inquiry form** (`app/contact/ContactContent.tsx`)
+POSTs to `/api/inquiry` with `source: "Contact Page Inquiry"`.
 
-**Two small capture forms** ("Keep me in the loop" on homepage, "Send me the invite
-link" on /contact) — just first name + email.
+**Two small capture forms** — "Keep me in the loop" on the homepage
+(`app/components/NewsletterCaptureForm.tsx`) and "Send me the invite link"
+on /contact (`ContactContent.tsx`) — POST to `/api/subscribe`.
 
-Both inquiry forms POST to the same `/api/inquiry` endpoint, just with slightly
-different field values mapped to a common shape (see snippets below).
+Both inquiry forms send the same payload shape:
 
-## 1. Get a Zoho app password
+```json
+{
+  "source": "Build & Launch Inquiry (Homepage)",
+  "name": "…",
+  "email": "…",
+  "category": "…",
+  "message": "…",
+  "referral": "…"
+}
+```
 
-Zoho blocks SMTP login with your normal password. You need an app-specific one:
+`name` and `email` are the only required fields server-side; the forms'
+own `required` attributes handle the rest of the UX validation.
 
-1. Sign in to Zoho Mail → click your profile icon → **My Account**
-2. Go to **Security** → **App Passwords**
-3. Click **Generate New Password**, name it something like `trcs-website`
-4. Copy the generated password — you won't see it again
-
-## 2. Configure
+## Configuration
 
 ```
 cd backend
@@ -54,12 +64,25 @@ cp .env.example .env
 
 Edit `.env`:
 
-- `ZOHO_EMAIL` — `tamika@tjrcs.net`
-- `ZOHO_APP_PASSWORD` — the app password from step 1
-- `TO_EMAIL` — where you want submissions delivered (can be the same address)
-- `ALLOWED_ORIGIN` — your live site's URL, e.g. `https://tjrcs.net`
+- `RESEND_API_KEY` — create one at [resend.com](https://resend.com) under
+  **API Keys**
+- `TO_EMAIL` — where submissions get delivered (`tamika@tjrcs.net`)
+- `ALLOWED_ORIGIN` — the live site's URL (`https://tjrcs.net`), so only the
+  site can call this API
+- `SHEETS_WEBHOOK_URL` — optional; see the Google Sheets section below
 
-## 3. Run it locally
+Emails send from `forms@tjrcs.net`. That address does not need to be a real
+Zoho mailbox: Resend only needs the domain verified (done at
+[resend.com/domains](https://resend.com/domains) via DNS records added in
+Vercel, where tjrcs.net's DNS is hosted), and replies go to the submitter
+through `replyTo`.
+
+Note: a Resend account with no verified domain can only deliver to the
+account owner's own signup email. If sending ever starts failing with a
+"testing emails" error, check that tjrcs.net still shows Verified in the
+Resend dashboard.
+
+## Run it locally
 
 ```
 npm install
@@ -69,7 +92,6 @@ npm start
 You should see:
 
 ```
-Zoho SMTP connection ready
 TJRCS backend listening on port 3000
 ```
 
@@ -78,137 +100,61 @@ Test it:
 ```
 curl -X POST http://localhost:3000/api/inquiry \
   -H "Content-Type: application/json" \
-  -d '{"source":"Contact Page Inquiry","name":"Test Person","email":"test@example.com","category":"Other","message":"Hello!","referral":"Google"}'
+  -d '{"source":"Local Test","name":"Test Person","email":"test@example.com","category":"Other","message":"Hello!","referral":"Google"}'
 ```
 
-Check the inbox for `TO_EMAIL`.
+Check the `TO_EMAIL` inbox.
 
-## 4. Log submissions to Google Sheets (optional, automatic)
+## Google Sheets logging (optional, automatic)
+
+Already set up and running. To recreate it from scratch:
 
 1. Create a new Google Sheet (any name, e.g. "TJRCS Website Submissions")
 2. In the Sheet, go to **Extensions → Apps Script**
 3. Delete the placeholder code and paste in the contents of `apps-script.gs`
 4. Click **Save**, then **Deploy → New deployment**
 5. Click the gear icon next to "Select type" → choose **Web app**
-6. Set:
-   - **Execute as:** Me
-   - **Who has access:** Anyone
-7. Click **Deploy** → authorize the permissions it asks for (it's your own script/sheet)
-8. Copy the **Web app URL** it gives you
-9. Paste that URL into `.env` as `SHEETS_WEBHOOK_URL`
-10. Restart the backend (or redeploy on Render)
+6. Set **Execute as:** Me, **Who has access:** Anyone
+7. Click **Deploy** and authorize the permissions it asks for (it's your own
+   script/sheet)
+8. Copy the **Web app URL** into `.env` as `SHEETS_WEBHOOK_URL` (and into
+   Render's Environment settings)
 
 The script auto-creates a "Submissions" tab with headers (Timestamp, Source,
 Name, Email, Category, Message, Referral) the first time a row comes in.
 
-If `SHEETS_WEBHOOK_URL` is left blank, the backend just skips this step and
-still sends email as normal — nothing breaks.
+If `SHEETS_WEBHOOK_URL` is left blank, the backend skips logging and still
+sends email as normal. Nothing breaks.
 
 **Note:** if you ever update `apps-script.gs`, you need to **Deploy → Manage
-deployments → edit (pencil) → New version** for changes to take effect — saving
-alone doesn't update a live deployment.
+deployments → edit (pencil) → New version** for changes to take effect.
+Saving alone doesn't update a live deployment.
 
-## 5. Wire up the real forms (for Claude Code / your Next.js codebase)
+## Deployment (Render)
 
-Both forms should call `/api/inquiry` on submit. Since the ids are already on
-the page, a plain fetch using `getElementById` works regardless of whether the
-form is controlled by React state — adapt to match how the component actually
-reads its inputs.
+Deployed as a Render Web Service at `https://tjrcs-backend.onrender.com`,
+auto-deploying from this repo's `main` branch:
 
-**Homepage "Build & Launch" form** — add this to its submit handler:
+- **Root directory:** `backend`
+- **Build command:** `npm install`
+- **Start command:** `npm start`
+- **Environment:** the same variables as `.env` (edit under the service's
+  **Environment** tab; saving triggers a redeploy)
 
-```js
-async function handleBuildLaunchSubmit(e) {
-  e.preventDefault();
+The frontend reads the backend's base URL from `NEXT_PUBLIC_BACKEND_URL`,
+set in Vercel project settings (and in `.env.local` for local dev). If the
+backend URL ever changes, update it in both places and redeploy the site.
+`NEXT_PUBLIC_` variables are baked into the build, so a redeploy is required
+for a change to take effect.
 
-  const payload = {
-    source: 'Build & Launch Inquiry (Homepage)',
-    name: document.getElementById('inquiry-name').value,
-    email: document.getElementById('inquiry-email').value,
-    category: document.getElementById('inquiry-role').value, // young-adult | parent | together
-    message: document.getElementById('inquiry-about').value,
-    referral: document.getElementById('inquiry-referral').value,
-  };
+**Free-tier note:** Render puts the service to sleep after inactivity. The
+first submission after a quiet period can take 30 to 60 seconds while it
+wakes up; the forms show "Sending…" during the wait.
 
-  const res = await fetch('https://your-backend-url.com/api/inquiry', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const data = await res.json();
-  // TODO: show data.message / handle data.error in the UI
-}
-```
+## Notes
 
-**Contact page general form** — same endpoint, different field mapping:
-
-```js
-async function handleContactSubmit(e) {
-  e.preventDefault();
-
-  const payload = {
-    source: 'Contact Page Inquiry',
-    name: document.getElementById('inquiry-name').value,
-    email: document.getElementById('inquiry-email').value,
-    category: document.getElementById('inquiry-service').value,
-    message: document.getElementById('inquiry-where-now').value,
-    referral: document.getElementById('inquiry-how-heard').value,
-  };
-
-  const res = await fetch('https://your-backend-url.com/api/inquiry', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const data = await res.json();
-  // TODO: show data.message / handle data.error in the UI
-}
-```
-
-**The two small capture forms** ("Keep me in the loop" / "Send me the invite
-link") — call `/api/subscribe` instead:
-
-```js
-async function handleSubscribeSubmit(e, sourceLabel) {
-  e.preventDefault();
-
-  const payload = {
-    source: sourceLabel, // e.g. "Homepage Newsletter" or "Contact Page Invite Link"
-    name: document.getElementById('capture-firstname').value,
-    email: document.getElementById('capture-email').value,
-  };
-
-  const res = await fetch('https://your-backend-url.com/api/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const data = await res.json();
-}
-```
-
-Replace `https://your-backend-url.com` with the real deployed URL once you've
-completed step 6.
-
-## 6. Deploy (free tier is fine for a small business site)
-
-**Render** (recommended — simplest):
-
-1. Push this `backend/` folder to a GitHub repo (can be the same repo as the
-   site, or its own — just make sure Render's "Root Directory" is set to `backend`)
-2. On [render.com](https://render.com) → **New Web Service** → connect the repo
-3. Root directory: `backend` · Build command: `npm install` · Start command: `npm start`
-4. Add the same variables from `.env` under **Environment**
-5. Deploy — Render gives you a URL like `https://trcs-backend.onrender.com`
-6. Use that URL in the frontend `fetch()` calls above, and set `ALLOWED_ORIGIN`
-   to `https://tjrcs.net`
-
-**Railway** is an equally simple alternative if you prefer it over Render.
-
-## Notes / next steps
-
-- Submissions go out as email and, if you set up `SHEETS_WEBHOOK_URL`, also land
-  as a row in your Google Sheet — both happen automatically on every submission.
-- Rate limiting is already in place (10 submissions per 15 min per IP) to cut down on spam.
-- `name` and `email` are the only required fields server-side; the forms' own
-  client-side `required` attributes handle the rest of the UX validation.
+- Rate limiting is in place (10 submissions per 15 min per IP) to cut down
+  on spam.
+- Resend resolves (rather than rejects) on API-level failures, so `server.js`
+  checks the `error` field on every send and surfaces it as a 500. If forms
+  report errors, check the Render logs for the underlying Resend message.

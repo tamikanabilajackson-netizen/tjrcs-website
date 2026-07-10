@@ -7,9 +7,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Backend for the site's forms
 
 There's a standalone Express backend in `backend/` (separate from this Next.js
-app — deployed on its own, e.g. Render, not through Vercel). It receives form
-submissions, emails them via Zoho, and logs them to a Google Sheet. Full details
-in `backend/README.md`.
+app — deployed on its own at https://tjrcs-backend.onrender.com, not through
+Vercel). It receives form submissions, emails them via the Resend API (from
+forms@tjrcs.net to tamika@tjrcs.net), and logs them to a Google Sheet. Full
+details in `backend/README.md`.
 
 The site's forms ARE wired to it (as of the latest work):
 
@@ -20,11 +21,10 @@ The site's forms ARE wired to it (as of the latest work):
 - Two small capture forms (`NewsletterCaptureForm.tsx` and the /contact page's
   invite-link capture, `handleCaptureSubmit`) → POST to `/api/subscribe`
 
-All four use `process.env.NEXT_PUBLIC_BACKEND_URL` as the backend's base URL.
-That variable is documented in `.env.local.example` at the project root — copy
-it to `.env.local` and fill in the real backend URL once `backend/` is deployed
-(see `backend/README.md` step 6). Until then, submissions will fail since there's
-nothing at that URL yet.
+All four use `process.env.NEXT_PUBLIC_BACKEND_URL` as the backend's base URL
+(https://tjrcs-backend.onrender.com), set in Vercel project settings and in
+`.env.local` locally (template: `.env.local.example`). `NEXT_PUBLIC_` vars are
+baked in at build time — changing the URL requires a Vercel redeploy.
 
 `backend/README.md` has the full setup: Zoho app password, `.env` config,
 Google Sheets logging, and deployment steps.
