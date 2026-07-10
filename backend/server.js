@@ -26,10 +26,11 @@ const formLimiter = rateLimit({
 });
 
 // ---- Mailer (Resend) ----
-// Sending from Resend's shared testing domain until a custom domain is
-// verified on the Resend account — see https://resend.com/domains.
+// tjrcs.net is verified at https://resend.com/domains, so we can send from
+// any address on the domain. forms@ doesn't need to be a real Zoho mailbox —
+// replies go to the submitter via replyTo, and delivery goes to TO_EMAIL.
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_EMAIL = 'TJRCS Website <onboarding@resend.dev>';
+const FROM_EMAIL = 'TJRCS Website <forms@tjrcs.net>';
 
 // ---- Helpers ----
 function isValidEmail(email) {
