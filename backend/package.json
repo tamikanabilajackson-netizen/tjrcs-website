@@ -1,0 +1,17 @@
+{
+  "name": "trcs-backend",
+  "version": "1.0.0",
+  "description": "TJRCS website backend - handles contact and booking form submissions and emails them via Zoho",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.14",
+    "express-rate-limit": "^7.4.0"
+  }
+}
