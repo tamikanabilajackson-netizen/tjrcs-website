@@ -108,6 +108,30 @@ be set correctly, or the backend isn't currently deployed/running on Render.
 An old copy of the program is still running in the background. Find and stop
 it, then try again.
 
+## IndexNow (telling search engines about updates)
+
+The site supports [IndexNow](https://www.indexnow.org/) — a way to instantly
+tell search engines (Bing, Yandex, and others) that the site's pages have
+changed, instead of waiting for them to crawl on their own schedule.
+
+- **Verification key file:** served at
+  `https://tjrcs.net/25a7d07e6edd47ac9804e2c52920bacb.txt`
+  (code: `app/25a7d07e6edd47ac9804e2c52920bacb.txt/route.ts`, key constant in
+  `lib/indexnow.ts`)
+- **Submission endpoint:** `POST https://tjrcs.net/api/indexnow`
+  (code: `app/api/indexnow/route.ts`) — submits every URL from the sitemap
+
+**To trigger it manually** (e.g., after deploying content changes), run this
+from any terminal:
+
+```
+curl -X POST https://tjrcs.net/api/indexnow
+```
+
+A successful response looks like `{"ok":true,"indexNowStatus":200,...}` (202
+is also fine — it means the key is still being validated). This is manual for
+now; wiring it into the deploy pipeline automatically is a possible later step.
+
 ## Who to ask / where to look for more detail
 
 - Full backend setup instructions: `backend/README.md`
