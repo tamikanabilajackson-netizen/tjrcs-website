@@ -2,10 +2,12 @@ import HeroSection from './components/HeroSection';
 import WhoItIsFor from './components/WhoItIsFor';
 import BuildLaunchInquiryForm from './components/BuildLaunchInquiryForm';
 import NewsletterCaptureForm from './components/NewsletterCaptureForm';
+import { localBusinessSchema, jsonLdHtml } from '@/lib/schema';
 
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdHtml(localBusinessSchema)} />
       <main id="main-content">
         <HeroSection />
 

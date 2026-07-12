@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ContactContent from './ContactContent';
+import { localBusinessSchema, jsonLdHtml } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Contact — Build & Launch | TJRCS',
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdHtml(localBusinessSchema)} />
+      <ContactContent />
+    </>
+  );
 }

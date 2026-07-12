@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ServicesContent from './ServicesContent';
+import { servicesFaqSchema, jsonLdHtml } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Services — TJRCS | Tamika Jackson Recreation and Consulting Services',
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdHtml(servicesFaqSchema)} />
+      <ServicesContent />
+    </>
+  );
 }
