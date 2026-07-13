@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
+import { servicesFaq } from '@/lib/schema';
 
 const ACCENT_BAR: CSSProperties = {
   position: 'absolute',
@@ -203,6 +204,59 @@ export default function ServicesContent() {
         >
           Send an inquiry
         </Link>
+      </section>
+
+      {/* ── 6. FAQ ── bg-white ────────────────────────────────────────────── */}
+      <section
+        aria-labelledby="faq-heading"
+        className="relative overflow-hidden bg-white py-20 px-[5%]"
+      >
+        <div style={ACCENT_BAR} aria-hidden="true" />
+
+        <div className="flex items-center gap-3 mb-6">
+          <span style={EYEBROW_LINE} aria-hidden="true" />
+          <span style={EYEBROW_TEXT}>Good to Know</span>
+        </div>
+
+        <h2 id="faq-heading" style={SERVICE_HEADING}>
+          Frequently Asked Questions
+        </h2>
+
+        <div style={{ maxWidth: '760px' }}>
+          {servicesFaq.map(({ question, answer }) => (
+            <details
+              key={question}
+              style={{ borderBottom: '1px solid rgba(28,59,58,0.15)' }}
+            >
+              <summary
+                style={{
+                  fontFamily: 'var(--font-montserrat)',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: 1.4,
+                  color: '#1C3B3A',
+                  padding: '22px 0',
+                  cursor: 'pointer',
+                }}
+              >
+                {question}
+              </summary>
+              <p
+                style={{
+                  fontFamily: 'var(--font-lato)',
+                  fontSize: '20px',
+                  lineHeight: 1.8,
+                  color: 'rgba(28,59,58,0.75)',
+                  borderLeft: '3px solid #E8924B',
+                  paddingLeft: '20px',
+                  margin: '0 0 24px',
+                }}
+              >
+                {answer}
+              </p>
+            </details>
+          ))}
+        </div>
       </section>
 
     </main>
