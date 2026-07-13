@@ -57,7 +57,6 @@ export default function AboutContent() {
     }
 
     const quotes = [
-      { id: 'quote-a', cursorId: 'cursor-a', text: 'It felt like it was made for me.' },
       {
         id: 'quote-b',
         cursorId: 'cursor-b',
@@ -182,46 +181,26 @@ export default function AboutContent() {
             </span>
           </div>
 
-          {/* Two-column grid: body content left, photo right */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
-            <div className="space-y-6">
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                I didn&apos;t plan to do this work.
-              </p>
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                I went to school to be a chemist. First at college for chemical engineering technology, then university in Toronto to complete my degree. I had a plan. I had a path.
-              </p>
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                While I was finishing that degree, I took a part-time job at a retirement home, just to pay the bills. When I graduated and the chemistry positions weren&apos;t coming, my manager asked me a question I wasn&apos;t expecting.
-              </p>
+          {/* Two-column grid: sage story box left, photo right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch" style={{ minHeight: '400px' }}>
 
-              {/* Pullquote 1 */}
-              <blockquote style={{ background: '#F9F4EC', borderLeft: '3px solid #E8924B', padding: '24px 32px', margin: '28px 0' }}>
-                <p style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, fontSize: '22px', color: '#1C3B3A', lineHeight: 1.4, fontStyle: 'normal', margin: 0 }}>
-                  &ldquo;Would you like to be an activity assistant?&rdquo;
-                </p>
-                <p style={{ fontFamily: 'var(--font-lato)', fontStyle: 'italic', fontSize: '16px', color: '#9BB5A8', margin: 0, marginTop: '10px' }}>
-                  a question that changed everything
-                </p>
-              </blockquote>
-
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                I said no. I told her I was a chemistry graduate. I had plans. She looked at me with the patience of someone who already knew the answer and said:
+            <div style={{
+              background: '#9BB5A8',
+              borderRadius: '10px',
+              padding: '32px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              height: '100%',
+            }}>
+              <p style={{ fontFamily: 'var(--font-lato)', fontWeight: 400, fontSize: '26px', lineHeight: 1.6, color: '#F9F4EC', margin: 0 }}>
+                I didn&apos;t plan to do this work. A part-time job at a retirement home while I was finishing a chemistry degree changed the direction of my life completely, and more than 15 years later, I&apos;m still building programs that help people discover what they&apos;re capable of.
               </p>
-
-              {/* Pullquote 2 */}
-              <blockquote style={{ background: '#F9F4EC', borderLeft: '3px solid #E8924B', padding: '24px 32px', margin: '28px 0' }}>
-                <p style={{ fontFamily: 'var(--font-montserrat)', fontWeight: 700, fontSize: '22px', color: '#1C3B3A', lineHeight: 1.4, fontStyle: 'normal', margin: 0 }}>
-                  &ldquo;But you don&apos;t have a job. And in the meantime, you can make extra money.&rdquo;
-                </p>
-              </blockquote>
-
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                So I said yes.
-              </p>
-              <p className="text-teal/75 text-[22px] leading-[1.8]">
-                That moment changed everything. I found something in that role I hadn&apos;t expected to find anywhere, something intrinsically valuable. A way of working that took everything I loved about life, all of my ideas, all of who I am as a person, and wrapped it into one purpose.
-              </p>
+              <a href="/blog/from-chemistry-to-community" style={{ color: '#1C3B3A', fontWeight: 700, fontSize: '18px', textDecoration: 'underline', marginTop: '20px', display: 'inline-block' }}>
+                &rarr; Read the full story: The Lab Coat
+              </a>
             </div>
 
             {/* Photo */}
@@ -229,48 +208,9 @@ export default function AboutContent() {
             <img
               src="/tamika-painting.png"
               alt="Tamika Jackson leading a watercolour painting session"
-              style={{ width: '100%', borderRadius: '12px', objectFit: 'cover', aspectRatio: '4/5', display: 'block' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', display: 'block' }}
             />
           </div>
-
-          {/* Variation A — typewriter quote */}
-          <div style={{
-            position: 'relative',
-            background: '#1C3B3A',
-            borderRadius: '10px',
-            padding: '32px 40px',
-            overflow: 'hidden',
-            marginTop: '16px',
-          }}>
-            <div style={{
-              position: 'absolute',
-              left: 0, top: 0, bottom: 0,
-              width: '4px',
-              background: '#E8924B',
-            }} />
-            <p style={{ margin: 0 }}>
-              <span id="quote-a" style={{
-                fontFamily: 'var(--font-montserrat)',
-                fontWeight: 700,
-                fontSize: '32px',
-                color: '#F9F4EC',
-                lineHeight: 1.35
-              }}></span><span id="cursor-a" style={{
-                display: 'inline-block',
-                width: '3px',
-                height: '0.85em',
-                background: '#F9F4EC',
-                marginLeft: '4px',
-                verticalAlign: 'middle',
-                animation: 'blink 0.75s step-end infinite',
-                opacity: 0,
-              }} aria-hidden="true"></span>
-            </p>
-          </div>
-
-          <p className="text-teal/75 text-[22px] leading-[1.8]">
-            I&apos;ve spent more than 15 years since then building programs that help people discover what they&apos;re capable of, applying therapeutic recreation principles across senior care and community settings. And somewhere along the way, I stopped thinking of this work as something I fell into. I started thinking of it as something I was guided toward.
-          </p>
 
         </div>
       </section>
@@ -321,13 +261,14 @@ export default function AboutContent() {
           </p>
 
           {/* Variation B — split amber/image panel */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            minHeight: '400px',
-          }}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 items-stretch"
+            style={{
+              borderRadius: '10px',
+              overflow: 'hidden',
+              minHeight: '400px',
+            }}
+          >
             <div style={{
               background: '#E8924B',
               padding: '32px',
@@ -401,7 +342,7 @@ export default function AboutContent() {
           </div>
 
           {/* Two-column grid: photo left, body paragraphs right */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/tamika-teaching.png"

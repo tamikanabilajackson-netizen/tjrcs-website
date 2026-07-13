@@ -160,7 +160,7 @@ export default function HeroSection() {
             className="transition-all duration-700"
             style={{ opacity: trustIn ? 1 : 0, transform: trustIn ? 'translateY(0)' : 'translateY(10px)' }}
           >
-            <div className="flex items-center gap-3 text-teal/55 text-[17px]" style={{ flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-3 text-teal/55 text-[17px] whitespace-normal md:whitespace-nowrap">
               <span>Ages 15&ndash;30</span>
               <span className="w-1.5 h-1.5 rounded-full bg-teal/30" aria-hidden="true" />
               <span>1:1 sessions</span>
