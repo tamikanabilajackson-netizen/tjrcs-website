@@ -113,7 +113,7 @@ export default function ServicesContent() {
         </h2>
 
         <p style={SERVICE_BODY}>
-          A 4-month, 1:1 recreation-based entrepreneurship and career exploration program for
+          A 4-month, 1-on-1 recreation-based entrepreneurship and career exploration program for
           autistic and neurodivergent young adults ages 15 to 30. Strengths-based, structured,
           and built around one person at a time.
         </p>

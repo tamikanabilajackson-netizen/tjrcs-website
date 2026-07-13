@@ -42,13 +42,13 @@ export default function Home() {
           <div>
             <h2 className="font-heading font-bold text-teal text-[36px] mb-8">What Build &amp; Launch is</h2>
             <p className="text-teal/75 text-[22px] leading-[1.8] mb-14">
-              Build &amp; Launch is a 4-month, 1:1 mentorship and career exploration program that applies therapeutic recreation principles, designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
+              Build &amp; Launch is a 4-month, 1-on-1 mentorship and career exploration program that applies therapeutic recreation principles, designed specifically for autistic and neurodivergent young adults ages 15&ndash;30. Every session, every activity, and every goal is built around one person: you. Your interests. Your communication style. Your pace. Your strengths.
             </p>
             {/* Top row — 3 cards */}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  title: "16 weekly 1:1 sessions",
+                  title: "16 weekly 1-on-1 sessions",
                   body: "In-person, approximately 60 minutes each. This is your space: consistent, predictable, and entirely focused on you.",
                 },
                 {
@@ -268,7 +268,7 @@ export default function Home() {
                 <hr className="border-sage/30 mb-5" />
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
-                    "4 weekly 1:1 sessions with Tamika",
+                    "4 weekly 1-on-1 sessions with Tamika",
                     "Your Build & Launch Journal, starting Session 1",
                     "Full Discover phase: strengths, interests, identity",
                   ].map((item) => (
@@ -301,7 +301,7 @@ export default function Home() {
                 <hr className="border-cream/20 mb-5" />
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
-                    "16 weekly 1:1 sessions with Tamika",
+                    "16 weekly 1-on-1 sessions with Tamika",
                     "2 virtual group sessions (small closed cohort)",
                     "2 Community Venture Days",
                     "Build & Launch Journal, yours to keep",
@@ -405,7 +405,7 @@ export default function Home() {
             <div className="bg-[#1C3B3A] rounded-2xl p-8 flex flex-col justify-between">
               <div>
                 <p className="text-white font-bold text-[15px] tracking-widest uppercase mb-6">YOUR YOUNG PERSON DOESN'T NEED ONE MORE WORKSHEET.</p>
-                <p className="text-white text-[18px] leading-[1.8]">They need someone who sees their strengths before they see their diagnosis. That's what Build & Launch is for. A 4-month, 1:1 recreation-based program designed around who they already are.</p>
+                <p className="text-white text-[18px] leading-[1.8]">They need someone who sees their strengths before they see their diagnosis. That's what Build & Launch is for. A 4-month, 1-on-1 recreation-based program designed around who they already are.</p>
               </div>
               <p className="text-[#9BB5A8] text-[11px] tracking-widest uppercase mt-8 pt-4 border-t border-[#9BB5A8]/30">Tamika Jackson Recreation and Consulting Services</p>
             </div>
