@@ -8,11 +8,24 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Render puts the app behind a reverse proxy — without this, express-rate-limit
+// sees the proxy's IP for every request instead of the visitor's.
+app.set('trust proxy', 1);
+
 // ---- Middleware ----
 app.use(express.json());
+
+// Fail closed: if ALLOWED_ORIGIN is unset, `origin: false` sends no CORS
+// headers at all (browsers block cross-origin calls) rather than allowing
+// every origin via '*'.
+if (!process.env.ALLOWED_ORIGIN) {
+  console.error(
+    'ALLOWED_ORIGIN is not set — cross-origin requests will be refused. Set it to the site origin, e.g. https://tjrcs.net'
+  );
+}
 app.use(
   cors({
-    origin: process.env.ALLOWED_ORIGIN || '*',
+    origin: process.env.ALLOWED_ORIGIN || false,
   })
 );
 
@@ -88,6 +101,15 @@ app.post('/api/inquiry', formLimiter, async (req, res) => {
   if (!name || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Name and a valid email are required.' });
   }
+  if (String(name).length > 100) {
+    return res.status(400).json({ error: 'Name must be 100 characters or fewer.' });
+  }
+  if (message && String(message).length > 500) {
+    return res.status(400).json({ error: 'Message must be 500 characters or fewer.' });
+  }
+  if (referral && String(referral).length > 500) {
+    return res.status(400).json({ error: 'The "how did you hear about us" field must be 500 characters or fewer.' });
+  }
 
   const formLabel = source || 'Website Inquiry';
 
@@ -135,6 +157,9 @@ app.post('/api/subscribe', formLimiter, async (req, res) => {
 
   if (!isValidEmail(email)) {
     return res.status(400).json({ error: 'A valid email is required.' });
+  }
+  if (name && String(name).length > 100) {
+    return res.status(400).json({ error: 'Name must be 100 characters or fewer.' });
   }
 
   const formLabel = source || 'Newsletter Signup';
