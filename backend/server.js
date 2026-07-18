@@ -65,7 +65,7 @@ async function logToSheet(payload) {
     const res = await fetch(process.env.SHEETS_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ ...payload, secret: process.env.SHEETS_SHARED_SECRET }),
       redirect: 'follow',
     });
     if (!res.ok) {
