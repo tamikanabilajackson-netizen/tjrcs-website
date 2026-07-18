@@ -262,9 +262,6 @@ export default function Home() {
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
                 <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
                 <p className="text-teal/60 text-[22px] mb-5">Entry point: Month 1 only</p>
-                <div className="bg-sage/20 border-l-4 border-sage rounded p-4 text-teal/75 text-[22px] leading-[1.8] mb-5">
-                  Prefer to split it? Pay as 2 &times; $100. Exit after Month 1 with no further obligation.
-                </div>
                 <hr className="border-sage/30 mb-5" />
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
@@ -281,9 +278,24 @@ export default function Home() {
                 <div className="bg-sage/10 rounded p-3 text-teal/65 text-[22px] italic mb-6">
                   Opt-out right: exit after Month 1. No further obligation.
                 </div>
-                <a href="#get-started" className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors">
+                <a
+                  href="https://www.paypal.com/ncp/payment/HY4KT67VY6T7S"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block border-2 border-teal text-teal font-semibold text-[17px] py-3 px-6 rounded-lg text-center hover:bg-teal hover:text-cream transition-colors"
+                >
                   Start with Discovery Month
                 </a>
+                <p className="text-teal/50 text-sm text-center mt-2">
+                  Secure payment via PayPal
+                </p>
+                <p className="text-teal/60 text-sm text-center mt-2">
+                  Not ready to pay yet?{" "}
+                  <a href="#get-started" className="underline hover:text-teal">
+                    Start the conversation
+                  </a>{" "}
+                  instead
+                </p>
               </div>
 
               {/* Card 2 — Full Program Installments (featured) */}
