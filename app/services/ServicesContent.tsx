@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { servicesFaq } from '@/lib/schema';
+import { buildAndLaunchProgram } from '@/lib/program-data';
 
 const ACCENT_BAR: CSSProperties = {
   position: 'absolute',
@@ -109,7 +110,7 @@ export default function ServicesContent() {
         <div style={ACCENT_BAR} aria-hidden="true" />
 
         <h2 id="build-launch-heading" style={SERVICE_HEADING}>
-          Build &amp; Launch
+          {buildAndLaunchProgram.name}
         </h2>
 
         <p style={SERVICE_BODY}>

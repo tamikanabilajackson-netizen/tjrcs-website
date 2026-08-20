@@ -3,6 +3,11 @@ import WhoItIsFor from './components/WhoItIsFor';
 import BuildLaunchInquiryForm from './components/BuildLaunchInquiryForm';
 import NewsletterCaptureForm from './components/NewsletterCaptureForm';
 import { localBusinessSchema, jsonLdHtml } from '@/lib/schema';
+import { buildAndLaunchProgram } from '@/lib/program-data';
+
+// Strips the " CAD" suffix from a canonical program-data price string for
+// display, since the site's pricing cards show bare dollar amounts.
+const cadAmount = (price: string) => price.replace(/\s*CAD$/, '');
 
 export default function Home() {
   return (
@@ -52,11 +57,11 @@ export default function Home() {
                   body: "In-person, approximately 60 minutes each. This is your space: consistent, predictable, and entirely focused on you.",
                 },
                 {
-                  title: "2 virtual group sessions",
+                  title: buildAndLaunchProgram.structure.groupSessions,
                   body: "Small, closed cohort. One focused on communication in business, one on personalities and selling principles. You'll know exactly what to expect before you arrive.",
                 },
                 {
-                  title: "2 Community Venture Days",
+                  title: buildAndLaunchProgram.structure.ventureDays,
                   body: "Real-world experience in your community, 4 to 6 hours each. Month 3 you explore with support. Month 4 you lead.",
                 },
               ].map((card) => (
@@ -70,7 +75,7 @@ export default function Home() {
             <div className="grid gap-5 sm:grid-cols-2 mt-5 lg:w-2/3 lg:mx-auto">
               {[
                 {
-                  title: "Your Build & Launch Journal",
+                  title: `Your ${buildAndLaunchProgram.structure.journal}`,
                   body: "Yours from Session 1. Every session adds a page. By the end of the program it becomes a complete portfolio of your ideas, your brand, your strengths, and your story.",
                 },
                 {
@@ -93,37 +98,12 @@ export default function Home() {
           <div>
             <h2 className="font-heading font-bold text-cream text-[36px] mb-14">The four phases</h2>
             <div className="grid gap-6 sm:grid-cols-2">
-              {[
-                {
-                  month: "Month 1",
-                  name: "DISCOVER",
-                  tagline: "Who you are is where we start.",
-                  body: "Before anything gets built, we go deep on what makes you you.",
-                },
-                {
-                  month: "Month 2",
-                  name: "BUILD",
-                  tagline: "Your idea, your voice, your brand.",
-                  body: "You take your strongest idea and make it real.",
-                },
-                {
-                  month: "Month 3",
-                  name: "PRACTICE",
-                  tagline: "Take it to the community.",
-                  body: "This is where the work meets the world.",
-                },
-                {
-                  month: "Month 4",
-                  name: "LAUNCH",
-                  tagline: "Show the world what you've built.",
-                  body: "You lead. You present. You celebrate.",
-                },
-              ].map((phase) => (
+              {buildAndLaunchProgram.phases.map((phase) => (
                 <div key={phase.name} className="phase-card border border-cream/20 rounded-lg p-8">
-                  <p className="text-amber text-lg font-medium mb-1 tracking-wide">{phase.month}</p>
-                  <h3 className="phase-title font-heading font-semibold text-cream text-[26px] mb-3">{phase.name}</h3>
+                  <p className="text-amber text-lg font-medium mb-1 tracking-wide">Month {phase.month}</p>
+                  <h3 className="phase-title font-heading font-semibold text-cream text-[26px] mb-3">{phase.name.toUpperCase()}</h3>
                   <p className="phase-tagline text-cream/90 font-medium mb-2 text-[22px] leading-[1.8]">{phase.tagline}</p>
-                  <p className="phase-body text-cream/65 text-[22px] leading-[1.8]">{phase.body}</p>
+                  <p className="phase-body text-cream/65 text-[22px] leading-[1.8]">{phase.description}</p>
                 </div>
               ))}
             </div>
@@ -260,13 +240,13 @@ export default function Home() {
               <div className="pricing-card flex-1 flex flex-col bg-white border-2 border-sage rounded-xl p-8">
                 <span className="bg-sage text-teal text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Try first</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Discovery Month</h3>
-                <p className="font-heading font-bold text-teal text-4xl mb-1">$200</p>
+                <p className="font-heading font-bold text-teal text-4xl mb-1">{cadAmount(buildAndLaunchProgram.pricing.discoveryMonth.price)}</p>
                 <p className="text-teal/60 text-[22px] mb-5">Entry point: Month 1 only</p>
                 <hr className="border-sage/30 mb-5" />
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
                     "4 weekly 1-on-1 sessions with Tamika",
-                    "Your Build & Launch Journal, starting Session 1",
+                    `Your ${buildAndLaunchProgram.structure.journal}, starting Session 1`,
                     "Full Discover phase: strengths, interests, identity",
                   ].map((item) => (
                     <li key={item} className="flex gap-3 text-teal/80 text-[22px] leading-[1.8]">
@@ -303,7 +283,7 @@ export default function Home() {
                 <span className="bg-amber text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Founding family rate</span>
                 <h3 className="font-heading font-semibold text-cream text-[26px] mb-1">Full Program: Installments</h3>
                 <div className="flex items-baseline gap-2 mb-1">
-                  <p className="font-heading font-bold text-cream text-4xl">$1,500</p>
+                  <p className="font-heading font-bold text-cream text-4xl">{cadAmount(buildAndLaunchProgram.pricing.fullProgramInstallments.total)}</p>
                   <span className="text-cream/60 text-[22px]">total</span>
                 </div>
                 <p className="text-sage text-[22px] mb-5">4-month program, paid in stages</p>
@@ -314,10 +294,10 @@ export default function Home() {
                 <ul className="space-y-3 mb-6 flex-1">
                   {[
                     "16 weekly 1-on-1 sessions with Tamika",
-                    "2 virtual group sessions (small closed cohort)",
-                    "2 Community Venture Days",
-                    "Build & Launch Journal, yours to keep",
-                    "End-of-program celebration",
+                    `${buildAndLaunchProgram.structure.groupSessions} (small closed cohort)`,
+                    buildAndLaunchProgram.structure.ventureDays,
+                    `${buildAndLaunchProgram.structure.journal}, yours to keep`,
+                    buildAndLaunchProgram.structure.closing,
                     "Participation Support Profile reviewed before every session",
                   ].map((item) => (
                     <li key={item} className="flex gap-3 text-cream text-[22px] leading-[1.8]">
@@ -339,7 +319,7 @@ export default function Home() {
                 <span className="border border-amber text-amber text-xs font-bold px-3 py-1 rounded-full w-fit mb-5">Best value</span>
                 <h3 className="font-heading font-semibold text-teal text-[26px] mb-1">Full Program: Paid in Full</h3>
                 <div className="flex items-baseline gap-2 mb-1">
-                  <p className="font-heading font-bold text-teal text-4xl">$1,200</p>
+                  <p className="font-heading font-bold text-teal text-4xl">{cadAmount(buildAndLaunchProgram.pricing.fullProgramPaidInFull.total)}</p>
                   <span className="text-amber text-[22px]">total</span>
                 </div>
                 <p className="text-teal/60 text-[22px] mb-5">Save $300 vs. the installment path</p>

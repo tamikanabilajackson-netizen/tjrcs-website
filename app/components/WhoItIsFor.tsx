@@ -1,13 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { buildAndLaunchProgram } from '@/lib/program-data';
 
-const LEFT_BULLETS = [
-  "You're autistic, neurodivergent, or identify that way, with or without a formal diagnosis",
-  "You've spent more time working around your challenges than building on your strengths",
-  "You want a space that's consistent, predictable, and genuinely built around who you are",
-  "You're ready to explore what a career could look like on your own terms",
-] as const;
+const LEFT_BULLETS = buildAndLaunchProgram.whoItsFor;
 
 const RIGHT_BULLETS = [
   "You want something that takes your young adult seriously: not a program that manages them, but one that genuinely invests in who they are and where they're going",
