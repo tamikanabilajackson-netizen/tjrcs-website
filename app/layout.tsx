@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/Navbar";
+import YerielChat from "./components/YerielChat";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -120,6 +121,10 @@ export default function RootLayout({
           </div>
 
         </footer>
+
+        {/* Floating chat widget — mounted once here so it appears on every
+            route (Home, About, Services, Contact, and the blog). */}
+        <YerielChat />
 
       </body>
     </html>
