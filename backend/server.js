@@ -4,6 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
+const Anthropic = require('@anthropic-ai/sdk');
+
+// Build & Launch facts, generated from the Next.js app's lib/program-data.ts
+// by scripts/generate-program-data.mjs. Never edit the JSON by hand and never
+// restate these facts inline below — lib/program-data.ts is the source of
+// truth for both the website copy and this chatbot.
+const programData = require('./program-data.json');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -38,12 +45,97 @@ const formLimiter = rateLimit({
   message: { error: 'Too many submissions. Please try again later.' },
 });
 
+// A chat turn is far cheaper than a form email but happens many times per
+// visit, so it gets its own, more permissive bucket than formLimiter.
+const chatLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 40,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many messages. Please give it a few minutes and try again.' },
+});
+
 // ---- Mailer (Resend) ----
 // tjrcs.net is verified at https://resend.com/domains, so we can send from
 // any address on the domain. forms@ doesn't need to be a real Zoho mailbox —
 // replies go to the submitter via replyTo, and delivery goes to TO_EMAIL.
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = 'TJRCS Website <forms@tjrcs.net>';
+
+// ---- Chatbot (Anthropic) ----
+// Constructed lazily: `new Anthropic()` throws when no key is present, and a
+// missing ANTHROPIC_API_KEY must not take down /api/inquiry or /api/subscribe.
+const CHAT_MODEL = 'claude-haiku-4-5-20251001';
+const MAX_MESSAGE_CHARS = 2000;
+const MAX_HISTORY_TURNS = 20;
+
+let anthropic = null;
+if (process.env.ANTHROPIC_API_KEY) {
+  anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+} else {
+  console.error('ANTHROPIC_API_KEY is not set — /api/chat will return 503 until it is.');
+}
+
+// Renders the Build & Launch facts out of program-data.json. Everything in
+// here traces back to lib/program-data.ts, so program details can never drift
+// between the website copy and what Yeriel says.
+function renderProgramFacts() {
+  const p = programData;
+  const phases = p.phases
+    .map((ph) => `  Month ${ph.month}, ${ph.name}: "${ph.tagline}" ${ph.description}`)
+    .join('\n');
+
+  return [
+    `PROGRAM: ${p.name} (${p.tagline})`,
+    `Ages: ${p.ageRange}. Duration: ${p.duration}.`,
+    `Summary: ${p.description}`,
+    '',
+    'THE FOUR PHASES:',
+    phases,
+    '',
+    'WHAT THE PROGRAM INCLUDES:',
+    `  ${p.structure.sessions}`,
+    `  ${p.structure.groupSessions}`,
+    `  ${p.structure.ventureDays}`,
+    `  ${p.structure.journal}`,
+    `  ${p.structure.closing}`,
+    '',
+    'PRICING:',
+    `  Discovery Month: ${p.pricing.discoveryMonth.price} (${p.pricing.discoveryMonth.note})`,
+    `  Full Program, installments: ${p.pricing.fullProgramInstallments.total} (${p.pricing.fullProgramInstallments.breakdown})`,
+    `  Full Program, paid in full: ${p.pricing.fullProgramPaidInFull.total} (${p.pricing.fullProgramPaidInFull.breakdown})`,
+    '',
+    'WHO IT IS FOR:',
+    ...p.whoItsFor.map((item) => `  ${item}`),
+    '',
+    'WHAT IT IS NOT:',
+    ...p.whatItIsNot.map((item) => `  ${item}`),
+  ].join('\n');
+}
+
+// Pure function of static data, so the string is byte-identical on every call.
+// That keeps it cheap to rebuild per request and keeps the cached prefix stable.
+function buildSystemPrompt() {
+  return `You are Yeriel, the assistant for Tamika Jackson Recreation and Consulting Services (TJRCS) at tjrcs.net. You answer questions about the Build & Launch program.
+
+${renderProgramFacts()}
+
+LANGUAGE RULES (non-negotiable, no exceptions):
+- Tamika's title is "Recreation Professional". Never call her a "recreation therapist" or "recreational therapist".
+- You may say the program "applies therapeutic recreation principles". Never describe it as "recreation therapy" or call "therapeutic recreation" a credential or a service.
+- Sessions are always "1-on-1". Never write "1:1".
+- Never use em dashes. Use periods or commas instead.
+- Refer to participants as "autistic young adults" or "neurodivergent young adults". Never use deficit language about them.
+
+WHAT YOU DO:
+- Answer questions about Build & Launch using only the facts listed above.
+- If you are asked something the facts above do not cover, say so honestly and point the visitor to the inquiry form at tjrcs.net or to a weekly Instagram Live info session. Never guess, never estimate, and never invent program details, dates, or prices.
+- Guide interested visitors toward the inquiry form or an info session.
+- Stay focused on Build & Launch. TJRCS also offers STEM Birthday Parties, Recreation Professional Services, and AI Consulting for Care Facilities. If someone asks about those, acknowledge briefly that TJRCS offers them and ask which service they are interested in, then point them to the inquiry form.
+- Never give clinical or medical advice. Never claim you can book a session, reserve a spot, or take payment. Those happen through the inquiry form and directly with Tamika.
+
+TONE: Warm, direct, and free of sales pressure. Keep answers short and plain. It is fine to say you do not know.`;
+}
 
 // ---- Helpers ----
 function isValidEmail(email) {
@@ -191,6 +283,107 @@ app.post('/api/subscribe', formLimiter, async (req, res) => {
     res.json({ success: true, message: "Thanks! You're on the list." });
   } catch (err) {
     console.error('Subscribe email failed:', err.message);
+    res.status(500).json({ error: 'Something went wrong. Please try again.' });
+  }
+});
+
+// Chat endpoint powering the Yeriel widget.
+// Expects: { message: string, history?: [{ role: "user"|"assistant", content: string }] }
+// Returns: { reply: string }
+//
+// History is supplied by the browser, so it is untrusted input: it gets
+// filtered, length-capped, and trimmed to the most recent turns before it
+// reaches the API. The system prompt is always rebuilt server-side and can
+// never be overridden by the client.
+app.post('/api/chat', chatLimiter, async (req, res) => {
+  const { message, history } = req.body || {};
+
+  if (typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'A message is required.' });
+  }
+  if (message.length > MAX_MESSAGE_CHARS) {
+    return res
+      .status(400)
+      .json({ error: `Message must be ${MAX_MESSAGE_CHARS} characters or fewer.` });
+  }
+  if (history !== undefined && !Array.isArray(history)) {
+    return res.status(400).json({ error: 'History must be an array if provided.' });
+  }
+  if (!anthropic) {
+    return res
+      .status(503)
+      .json({ error: 'The chat assistant is not available right now. Please use the inquiry form.' });
+  }
+
+  // Keep only well-formed turns, then take the most recent ones to bound cost.
+  const cleanHistory = (Array.isArray(history) ? history : [])
+    .filter(
+      (turn) =>
+        turn &&
+        (turn.role === 'user' || turn.role === 'assistant') &&
+        typeof turn.content === 'string' &&
+        turn.content.trim() &&
+        turn.content.length <= MAX_MESSAGE_CHARS
+    )
+    .slice(-MAX_HISTORY_TURNS)
+    .map((turn) => ({ role: turn.role, content: turn.content }));
+
+  // The Messages API requires the first turn to be from the user, so drop any
+  // leading assistant turns left over after trimming.
+  while (cleanHistory.length && cleanHistory[0].role !== 'user') {
+    cleanHistory.shift();
+  }
+
+  try {
+    const response = await anthropic.messages.create({
+      model: CHAT_MODEL,
+      max_tokens: 1024,
+      system: buildSystemPrompt(),
+      messages: [...cleanHistory, { role: 'user', content: message }],
+    });
+
+    // response.content is a list of blocks; concatenate the text ones.
+    const reply = response.content
+      .filter((block) => block.type === 'text')
+      .map((block) => block.text)
+      .join('')
+      .trim();
+
+    if (!reply) {
+      console.error('Anthropic returned no text. stop_reason:', response.stop_reason);
+      return res
+        .status(502)
+        .json({ error: "Sorry, I couldn't answer that. Please try rephrasing." });
+    }
+
+    res.json({ reply });
+  } catch (err) {
+    // Typed SDK errors, most specific first.
+    if (err instanceof Anthropic.AuthenticationError) {
+      console.error('Anthropic auth failed — check ANTHROPIC_API_KEY:', err.message);
+      return res
+        .status(503)
+        .json({ error: 'The chat assistant is not available right now. Please use the inquiry form.' });
+    }
+    if (err instanceof Anthropic.RateLimitError) {
+      console.error('Anthropic rate limit hit:', err.message);
+      return res
+        .status(429)
+        .json({ error: "We're getting a lot of questions right now. Please try again in a moment." });
+    }
+    if (err instanceof Anthropic.APIConnectionError) {
+      console.error('Could not reach Anthropic:', err.message);
+      return res
+        .status(504)
+        .json({ error: 'The chat assistant is taking too long to respond. Please try again.' });
+    }
+    if (err instanceof Anthropic.APIError) {
+      console.error(`Anthropic API error ${err.status}:`, err.message);
+      return res
+        .status(502)
+        .json({ error: 'Something went wrong answering that. Please try again.' });
+    }
+    console.error('Unexpected chat failure:', err.message);
     res.status(500).json({ error: 'Something went wrong. Please try again.' });
   }
 });

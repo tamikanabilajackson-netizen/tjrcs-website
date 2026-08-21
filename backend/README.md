@@ -22,10 +22,59 @@ not part of the Next.js/Vercel build.
   - `POST /api/inquiry` — used by both real inquiry forms on the site
   - `POST /api/subscribe` — used by the two small "keep me in the loop" /
     "send me the invite link" capture forms
+  - `POST /api/chat` — the Yeriel chatbot (see below)
   - `GET /api/health` — health check
 - `apps-script.gs` — pasted into a Google Sheet to log submissions there
+- `program-data.json` — **generated, do not edit by hand** (see below)
 - `package.json` — dependencies
 - `.env.example` — template for your secrets (copy to `.env`)
+
+## The Yeriel chatbot (`POST /api/chat`)
+
+Answers visitor questions about Build & Launch using Claude Haiku 4.5.
+
+Request:
+
+```json
+{
+  "message": "How much does the program cost?",
+  "history": [
+    { "role": "user", "content": "Hi" },
+    { "role": "assistant", "content": "Hi! How can I help?" }
+  ]
+}
+```
+
+`history` is optional. Response is `{ "reply": "..." }`.
+
+Guardrails: messages are capped at 2000 characters, history is trimmed to the
+last 20 turns, and the endpoint is rate limited to 40 requests per 15 minutes
+per IP. If `ANTHROPIC_API_KEY` is missing the endpoint returns 503 and the rest
+of the server keeps working normally.
+
+### Where the program facts come from
+
+`lib/program-data.ts` in the Next.js app is the single source of truth for
+Build & Launch facts. It also drives the website copy, so the chatbot and the
+site can never disagree.
+
+Because `server.js` is a separate CommonJS app that can't import TypeScript,
+`scripts/generate-program-data.mjs` (at the repo root) compiles that file down
+to `backend/program-data.json`, which `server.js` reads with a plain `require`.
+The JSON is committed so Render needs no build step.
+
+**After changing `lib/program-data.ts`, regenerate and commit the JSON:**
+
+```bash
+npm run generate:program-data   # from the repo root
+```
+
+`npm run build` does this automatically via the `prebuild` hook, and
+`npm run check:program-data` exits non-zero if the JSON has drifted, which
+makes it usable as a CI or pre-deploy guard.
+
+Never restate program facts inline in `server.js`. That is exactly the drift
+this setup exists to prevent.
 
 ## The forms on tjrcs.net this connects to
 
