@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { buildAndLaunchProgram } from '@/lib/program-data';
 
 // Configurable so a staging backend can be pointed at without a code change.
 // NEXT_PUBLIC_ vars are inlined at build time, so changing this needs a redeploy.
@@ -34,6 +35,8 @@ type ChatMessage = {
   /** Client-side notices (greeting, errors) are shown but never sent as history. */
   local?: boolean;
   isError?: boolean;
+  /** Backend flagged this reply as a booking response; render the CTA under it. */
+  showBooking?: boolean;
 };
 
 let messageId = 0;
@@ -184,7 +187,15 @@ export default function YerielChat() {
         return;
       }
 
-      setMessages((prev) => [...prev, { id: nextId(), role: 'assistant', content: data.reply }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: nextId(),
+          role: 'assistant',
+          content: data.reply,
+          showBooking: data.showBooking === true,
+        },
+      ]);
     } catch {
       // Network failure, timeout, or a blocked cross-origin request. The
       // visitor gets one plain message either way, never a raw error.
@@ -288,20 +299,39 @@ export default function YerielChat() {
             className="flex-1 space-y-3 overflow-y-auto px-4 py-4"
           >
             {messages.map((m) => (
-              <div key={m.id} className={m.role === 'user' ? 'flex justify-end' : 'flex justify-start'}>
-                <div
-                  className={[
-                    'max-w-[85%] rounded-xl px-4 py-2.5 font-sans text-[16px] leading-[1.6] whitespace-pre-wrap',
-                    m.role === 'user'
-                      ? 'bg-[#1C3B3A] text-[#F9F4EC]'
-                      : m.isError
-                        ? 'bg-white text-[#1C3B3A] border-l-4 border-[#E8924B]'
-                        : 'bg-white text-[#1C3B3A] border border-[#9BB5A8]/50',
-                  ].join(' ')}
-                >
-                  <span className="sr-only">{m.role === 'user' ? 'You said: ' : 'Yeriel said: '}</span>
-                  {m.content}
+              <div key={m.id}>
+                <div className={m.role === 'user' ? 'flex justify-end' : 'flex justify-start'}>
+                  <div
+                    className={[
+                      'max-w-[85%] rounded-xl px-4 py-2.5 font-sans text-[16px] leading-[1.6] whitespace-pre-wrap',
+                      m.role === 'user'
+                        ? 'bg-[#1C3B3A] text-[#F9F4EC]'
+                        : m.isError
+                          ? 'bg-white text-[#1C3B3A] border-l-4 border-[#E8924B]'
+                          : 'bg-white text-[#1C3B3A] border border-[#9BB5A8]/50',
+                    ].join(' ')}
+                  >
+                    <span className="sr-only">{m.role === 'user' ? 'You said: ' : 'Yeriel said: '}</span>
+                    {m.content}
+                  </div>
                 </div>
+
+                {/* Booking CTA. The URL comes straight from lib/program-data.ts,
+                    never from the API response, so it is never spoken by the
+                    model and never shown as text. */}
+                {m.showBooking && (
+                  <div className="mt-3 flex justify-start">
+                    <a
+                      href={buildAndLaunchProgram.consultationBookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="max-w-[85%] rounded-lg bg-[#E8924B] px-4 py-2.5 text-left font-heading text-[14px] font-bold leading-snug text-white transition-colors hover:bg-[#d4793a]"
+                    >
+                      Book a free 1-on-1 consultation with Tamika
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
 

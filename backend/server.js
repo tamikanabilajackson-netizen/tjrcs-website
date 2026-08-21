@@ -69,6 +69,13 @@ const CHAT_MODEL = 'claude-haiku-4-5-20251001';
 const MAX_MESSAGE_CHARS = 2000;
 const MAX_HISTORY_TURNS = 20;
 
+// Yeriel emits this marker when a visitor wants to book time with Tamika.
+// The booking URL itself is never sent to the model (see renderProgramFacts),
+// so the model has no way to speak or invent the address. The marker is
+// stripped here and surfaced to the widget as a `showBooking` flag, which the
+// widget turns into a button using the URL from lib/program-data.ts.
+const BOOKING_MARKER = '[[BOOK_CONSULT]]';
+
 let anthropic = null;
 if (process.env.ANTHROPIC_API_KEY) {
   anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -79,6 +86,10 @@ if (process.env.ANTHROPIC_API_KEY) {
 // Renders the Build & Launch facts out of program-data.json. Everything in
 // here traces back to lib/program-data.ts, so program details can never drift
 // between the website copy and what Yeriel says.
+//
+// Deliberately omits programData.consultationBookingUrl. Keeping the booking
+// URL out of the prompt is what guarantees Yeriel can never print it or
+// hallucinate a variation of it. The widget owns rendering that link.
 function renderProgramFacts() {
   const p = programData;
   const phases = p.phases
@@ -133,6 +144,12 @@ WHAT YOU DO:
 - Guide interested visitors toward the inquiry form or an info session.
 - Stay focused on Build & Launch. TJRCS also offers STEM Birthday Parties, Recreation Professional Services, and AI Consulting for Care Facilities. If someone asks about those, acknowledge briefly that TJRCS offers them and ask which service they are interested in, then point them to the inquiry form.
 - Never give clinical or medical advice. Never claim you can book a session, reserve a spot, or take payment. Those happen through the inquiry form and directly with Tamika.
+
+BOOKING A CONSULTATION:
+- When someone asks about booking, scheduling, setting up a call, meeting, or talking with Tamika directly, tell them warmly that Tamika offers a free 1-on-1 consultation. Say briefly what it is: a relaxed conversation where they can ask questions and work out together whether Build & Launch is the right fit, with no obligation and no sales pitch.
+- End that reply with the marker ${BOOKING_MARKER} as the very last thing you write.
+- The website turns that marker into a button the visitor can click to book, so write the reply as though the button is already sitting underneath it. Do not describe the button, do not write out a link, and never mention or invent a web address. You do not know the booking address and must not guess at one.
+- Use the marker only when booking, scheduling, or speaking with Tamika has genuinely come up. Do not attach it to unrelated answers.
 
 TONE: Warm, direct, and free of sales pressure. Keep answers short and plain. It is fine to say you do not know.`;
 }
@@ -343,11 +360,16 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
     });
 
     // response.content is a list of blocks; concatenate the text ones.
-    const reply = response.content
+    const raw = response.content
       .filter((block) => block.type === 'text')
       .map((block) => block.text)
       .join('')
       .trim();
+
+    const showBooking = raw.includes(BOOKING_MARKER);
+    // Strip every occurrence of the marker, then tidy the whitespace it leaves
+    // behind, so the marker itself can never reach the browser.
+    const reply = raw.split(BOOKING_MARKER).join('').replace(/\n{3,}/g, '\n\n').trim();
 
     if (!reply) {
       console.error('Anthropic returned no text. stop_reason:', response.stop_reason);
@@ -356,7 +378,7 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
         .json({ error: "Sorry, I couldn't answer that. Please try rephrasing." });
     }
 
-    res.json({ reply });
+    res.json({ reply, showBooking });
   } catch (err) {
     // Typed SDK errors, most specific first.
     if (err instanceof Anthropic.AuthenticationError) {

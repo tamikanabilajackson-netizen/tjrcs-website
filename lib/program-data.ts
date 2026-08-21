@@ -48,6 +48,7 @@ export interface BuildAndLaunchProgram {
   pricing: ProgramPricing;
   whoItsFor: string[];
   whatItIsNot: string[];
+  consultationBookingUrl: string;
 }
 
 export const buildAndLaunchProgram: BuildAndLaunchProgram = {
@@ -120,4 +121,11 @@ export const buildAndLaunchProgram: BuildAndLaunchProgram = {
     'Not covered by OHIP or insurance',
     'Not a substitute for therapy or regulated professional support',
   ],
+
+  // Booking link for the free 1-on-1 consultation with Tamika. This URL will
+  // change if the booking platform changes, so keep this the only place it
+  // lives. The chat widget reads it from here for the booking button; it is
+  // deliberately kept out of Yeriel's system prompt so the model has no way
+  // to speak the raw address.
+  consultationBookingUrl: 'https://calendly.com/tjrcs/sandy-lee-1-hour-set-up',
 };
