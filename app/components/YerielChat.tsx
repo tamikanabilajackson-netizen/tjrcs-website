@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Configurable so a staging backend can be pointed at without a code change.
@@ -255,27 +254,16 @@ export default function YerielChat() {
         >
           {/* Header */}
           <div className="flex items-center justify-between gap-3 bg-[#1C3B3A] px-5 py-4">
-            {/* min-w-0 lets the text column shrink instead of pushing the
-                close button off the edge on narrow screens. */}
-            <div className="flex min-w-0 items-center gap-3">
-              <Image
-                src="/yeriel-avatar.png"
-                alt="Yeriel, the TJRCS AI assistant"
-                width={40}
-                height={40}
-                className="shrink-0 rounded-full object-cover"
-              />
-              <div className="min-w-0">
-                <h2
-                  id="yeriel-title"
-                  className="font-heading text-[20px] font-bold leading-tight text-[#F9F4EC]"
-                >
-                  Yeriel
-                </h2>
-                <p className="font-sans text-[13px] leading-tight text-[#9BB5A8]">
-                  AI assistant for Build &amp; Launch
-                </p>
-              </div>
+            <div>
+              <h2
+                id="yeriel-title"
+                className="font-heading text-[20px] font-bold leading-tight text-[#F9F4EC]"
+              >
+                Yeriel
+              </h2>
+              <p className="font-sans text-[13px] leading-tight text-[#9BB5A8]">
+                Questions about Build &amp; Launch
+              </p>
             </div>
             <button
               type="button"
