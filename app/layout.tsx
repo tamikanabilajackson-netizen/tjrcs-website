@@ -113,10 +113,18 @@ export default function RootLayout({
 
           </div>
 
-          {/* Copyright */}
+          {/* Copyright + fine print */}
           <div style={{ paddingTop: '16px', textAlign: 'center' }}>
             <p style={{ color: '#F9F4EC', fontSize: '12px', fontFamily: 'var(--font-lato)' }}>
               &copy; 2026 Tamika Jackson Recreation and Consulting Services. All rights reserved.
+              {' '}
+              <a
+                href="/privacy"
+                className="underline hover:text-[#E8924B] focus-visible:outline-2 focus-visible:outline-[#E8924B] focus-visible:outline-offset-2 rounded"
+                style={{ color: 'inherit' }}
+              >
+                Privacy Policy
+              </a>
             </p>
           </div>
 
